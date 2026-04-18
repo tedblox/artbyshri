@@ -476,6 +476,8 @@
         // Check file size (max 10MB)
         if (selectedFile.size > 10 * 1024 * 1024) throw new Error('Image too large. Please use a photo under 10MB.');
 
+        const base64 = await fileToBase64(selectedFile);
+
         // Upload image - try images/ folder first, fall back to root
         let uploadPath = 'images/' + fileName;
         let imgRes = await githubPut(username, repo, token, uploadPath, base64, 'Add image: ' + fileName);
