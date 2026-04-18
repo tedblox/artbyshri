@@ -470,11 +470,31 @@
       // Step 1: Upload image if selected
       if (selectedFile) {
         setProgress(20, 'Uploading image…');
-        const fileName = title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.' + selectedFile.name.split('.').pop();
+        const ext = selectedFile.name.split('.').pop().toLowerCase();
+        const fileName = title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.' + ext;
+
+        // Check file size (max 10MB)
+        if (selectedFile.size > 10 * 1024 * 1024) throw new Error('Image too large. Please use a photo under 10MB.');
+
         const base64 = await fileToBase64(selectedFile);
-        const imgRes = await githubPut(username, repo, token, `images/${fileName}`, base64, `Add image: ${fileName}`);
-        if (!imgRes.ok) throw new Error('Image upload failed');
-        imagePath = `images/${fileName}`;
+
+        // Try images/filename first, fall back to root if images is a file not folder
+        let uploadPath = `images/${fileName}`;
+        let imgRes = await githubPut(username, repo, token, uploadPath, base64, `Add image: ${fileName}`);
+
+        if (!imgRes.ok) {
+          const errData = await imgRes.json().catch(() => ({}));
+          // If conflict with images file, upload to root instead
+          if (errData.message && errData.message.includes('sha')) {
+            uploadPath = fileName;
+            imgRes = await githubPut(username, repo, token, uploadPath, base64, `Add image: ${fileName}`);
+          }
+          if (!imgRes.ok) {
+            const errData2 = await imgRes.json().catch(() => ({}));
+            throw new Error('Image upload failed: ' + (errData2.message || imgRes.status));
+          }
+        }
+        imagePath = uploadPath;
       }
 
       setProgress(60, 'Updating gallery…');
