@@ -1,5 +1,15 @@
 [
   {
+    "title": "Test4",
+    "medium": "Acrlic",
+    "size": "24x22",
+    "price": "400",
+    "category": "abstract",
+    "description": "",
+    "image": "images/test4.jpeg",
+    "available": true
+  },
+  {
     "title": "Test3",
     "medium": "acrlyc",
     "size": "24x30",
