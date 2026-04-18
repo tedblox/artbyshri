@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin · Art by Shri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --coral: #FF6B5B; --yellow: #FFD166; --teal: #06D6A0;
+      --navy: #1A1A2E; --cream: #FFFBF2; --soft: #F7F0E6; --ink: #2D2D2D;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: #0f0f1f; color: #fff; min-height: 100vh; }
+
+    /* ── Login screen ── */
+    #loginScreen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at 60% 40%, rgba(255,107,91,.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(6,214,160,.1) 0%, transparent 50%), #0f0f1f;
+    }
+    .login-card {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px; padding: 48px; width: 100%; max-width: 420px; text-align: center;
+    }
+    .login-logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--coral); margin-bottom: 8px; }
+    .login-sub { font-size: .9rem; color: rgba(255,255,255,.4); margin-bottom: 36px; }
+    .login-card input {
+      width: 100%; padding: 14px 18px; border-radius: 12px;
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.12);
+      color: #fff; font-size: 1rem; font-family: 'DM Sans', sans-serif;
+      outline: none; margin-bottom: 16px; letter-spacing: 3px; text-align: center;
+    }
+    .login-card input:focus { border-color: var(--coral); }
+    .login-btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none;
+      background: var(--coral); color: #fff; font-size: 1rem; font-weight: 500;
+      cursor: pointer; transition: opacity .2s;
+    }
+    .login-btn:hover { opacity: .85; }
+    .login-error { color: #ff6b6b; font-size: .85rem; margin-top: 12px; display: none; }
+
+    /* ── Admin panel ── */
+    #adminPanel { display: none; }
+    .admin-nav {
+      background: rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .admin-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--coral); }
+    .admin-logo span { color: rgba(255,255,255,.5); font-size: .85rem; font-family: 'DM Sans', sans-serif; margin-left: 12px; }
+    .logout-btn {
+      padding: 8px 20px; border-radius: 100px; border: 1px solid rgba(255,255,255,.15);
+      background: transparent; color: rgba(255,255,255,.5); font-size: .85rem; cursor: pointer;
+      transition: all .2s;
+    }
+    .logout-btn:hover { border-color: var(--coral); color: var(--coral); }
+
+    .admin-body { max-width: 1100px; margin: 0 auto; padding: 40px; }
+    .admin-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .admin-sub { color: rgba(255,255,255,.4); font-size: .9rem; margin-bottom: 40px; }
+
+    /* Setup banner */
+    .setup-banner {
+      background: rgba(255,209,102,.08); border: 1px solid rgba(255,209,102,.25);
+      border-radius: 16px; padding: 20px 24px; margin-bottom: 32px;
+    }
+    .setup-banner h3 { color: var(--yellow); font-size: 1rem; margin-bottom: 12px; }
+    .setup-banner p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 8px; }
+    .setup-banner code {
+      background: rgba(255,255,255,.1); padding: 2px 8px; border-radius: 6px;
+      font-size: .82rem; color: var(--yellow);
+    }
+    .setup-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .setup-input {
+      padding: 10px 14px; border-radius: 10px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: #fff; font-size: .85rem; font-family: 'DM Sans', sans-serif; outline: none;
+      width: 100%;
+    }
+    .setup-input:focus { border-color: var(--yellow); }
+    .setup-save {
+      margin-top: 12px; padding: 10px 24px; border-radius: 100px; border: none;
+      background: var(--yellow); color: var(--navy); font-weight: 500; font-size: .85rem;
+      cursor: pointer;
+    }
+
+    .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+    /* Form card */
+    .form-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px; padding: 32px;
+    }
+    .form-card h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 24px; color: #fff; }
+    .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .field label { font-size: .78rem; font-weight: 500; letter-spacing: .5px; color: rgba(255,255,255,.45); text-transform: uppercase; }
+    .field input, .field textarea, .field select {
+      padding: 12px 16px; border-radius: 10px;
+      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.1);
+      color: #fff; font-size: .95rem; font-family: 'DM Sans', sans-serif;
+      outline: none; transition: border-color .2s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--coral); }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field select option { background: #1a1a2e; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* Image upload */
+    .image-drop {
+      border: 2px dashed rgba(255,255,255,.15); border-radius: 14px;
+      padding: 32px; text-align: center; cursor: pointer;
+      transition: border-color .2s, background .2s; margin-bottom: 18px;
+      position: relative;
+    }
+    .image-drop:hover, .image-drop.drag-over { border-color: var(--coral); background: rgba(255,107,91,.05); }
+    .image-drop input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+    .drop-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .drop-text { font-size: .9rem; color: rgba(255,255,255,.5); }
+    .drop-hint { font-size: .78rem; color: rgba(255,255,255,.25); margin-top: 6px; }
+    .image-preview {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      border-radius: 10px; display: none; margin-bottom: 18px;
+    }
+
+    .available-toggle { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .toggle { position: relative; width: 48px; height: 26px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; inset: 0; border-radius: 100px;
+      background: rgba(255,255,255,.15); cursor: pointer; transition: .3s;
+    }
+    .toggle-slider::before {
+      content:''; position: absolute; width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; left: 3px; top: 3px; transition: .3s;
+    }
+    .toggle input:checked + .toggle-slider { background: var(--teal); }
+    .toggle input:checked + .toggle-slider::before { transform: translateX(22px); }
+    .toggle-label { font-size: .9rem; color: rgba(255,255,255,.7); }
+
+    .save-btn {
+      width: 100%; padding: 16px; border-radius: 12px; border: none;
+      background: var(--coral); color: #fff; font-size: 1rem; font-weight: 500;
+      cursor: pointer; transition: opacity .2s, transform .2s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .save-btn:hover { opacity: .9; transform: translateY(-2px); }
+    .save-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    /* Progress */
+    .progress-wrap { display: none; margin-top: 16px; }
+    .progress-bar-bg { background: rgba(255,255,255,.1); border-radius: 100px; height: 6px; overflow: hidden; }
+    .progress-bar { height: 100%; background: var(--coral); border-radius: 100px; width: 0%; transition: width .3s; }
+    .progress-text { font-size: .82rem; color: rgba(255,255,255,.45); margin-top: 8px; text-align: center; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 32px; right: 32px; z-index: 999;
+      padding: 14px 24px; border-radius: 12px; font-size: .9rem; font-weight: 500;
+      transform: translateY(80px); opacity: 0; transition: all .3s; pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--teal); color: #0a3d2e; }
+    .toast.error { background: #ff6b6b; color: #fff; }
+
+    /* Paintings list */
+    .list-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px; padding: 32px;
+    }
+    .list-card h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 24px; }
+    .painting-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .painting-item:last-child { border-bottom: none; }
+    .painting-thumb {
+      width: 60px; height: 60px; border-radius: 10px; object-fit: cover;
+      background: rgba(255,255,255,.08); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .painting-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+    .painting-info { flex: 1; min-width: 0; }
+    .painting-name { font-weight: 500; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .painting-meta { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 3px; }
+    .painting-price { font-size: .95rem; color: var(--coral); font-weight: 500; flex-shrink: 0; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-available { background: var(--teal); }
+    .dot-sold { background: rgba(255,255,255,.2); }
+    .delete-btn {
+      padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(255,100,100,.3);
+      background: transparent; color: rgba(255,100,100,.6); font-size: .78rem; cursor: pointer;
+      transition: all .2s; flex-shrink: 0;
+    }
+    .delete-btn:hover { background: rgba(255,100,100,.1); color: #ff6b6b; border-color: #ff6b6b; }
+    .empty-list { text-align: center; padding: 40px; color: rgba(255,255,255,.25); font-size: .9rem; }
+
+    @media (max-width: 900px) {
+      .admin-grid { grid-template-columns: 1fr; }
+      .setup-fields { grid-template-columns: 1fr; }
+      .admin-body { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">artbyshri</div>
+    <div class="login-sub">Admin Panel · Private</div>
+    <input type="password" id="passwordInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <button class="login-btn" onclick="tryLogin()">Enter Studio</button>
+    <div class="login-error" id="loginError">Incorrect password. Try again.</div>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="adminPanel">
+  <nav class="admin-nav">
+    <div class="admin-logo">artbyshri <span>Admin Studio</span></div>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a href="index.html" target="_blank" style="color:rgba(255,255,255,.4);font-size:.85rem;text-decoration:none;">View Site ↗</a>
+      <button class="logout-btn" onclick="logout()">Log Out</button>
+    </div>
+  </nav>
+
+  <div class="admin-body">
+    <div class="admin-title">Add a New Painting</div>
+    <div class="admin-sub">Upload your photo, fill in the details, hit save — your gallery updates instantly.</div>
+
+    <!-- GitHub setup banner -->
+    <div class="setup-banner" id="setupBanner">
+      <h3>⚙️ One-time setup needed</h3>
+      <p>To save paintings automatically, enter your GitHub details below. These are stored only in your browser.</p>
+      <p>Get your token at <code>github.com → Settings → Developer settings → Personal access tokens → Tokens (classic)</code> — tick the <code>repo</code> scope.</p>
+      <div class="setup-fields">
+        <input class="setup-input" id="ghUsername" placeholder="GitHub username (e.g. tedblox)" />
+        <input class="setup-input" id="ghRepo" placeholder="Repo name (e.g. artbyshri)" />
+        <input class="setup-input" id="ghToken" placeholder="GitHub token (ghp_...)" type="password" style="grid-column:1/-1"/>
+      </div>
+      <button class="setup-save" onclick="saveGitHubConfig()">Save GitHub Settings</button>
+    </div>
+
+    <div class="admin-grid">
+      <!-- ADD FORM -->
+      <div class="form-card">
+        <h2>✦ New Painting</h2>
+
+        <img id="imagePreview" class="image-preview" alt="Preview"/>
+        <div class="image-drop" id="imageDrop">
+          <input type="file" id="imageFile" accept="image/*" onchange="previewImage(this)"/>
+          <div class="drop-icon">🖼️</div>
+          <div class="drop-text">Drop photo here or click to choose</div>
+          <div class="drop-hint">JPG or PNG · Max 5MB · Will be saved as images/filename.jpg</div>
+        </div>
+
+        <div class="field">
+          <label>Painting Title</label>
+          <input type="text" id="fTitle" placeholder="e.g. Burst of Joy"/>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Medium</label>
+            <input type="text" id="fMedium" placeholder="e.g. Acrylic on Canvas"/>
+          </div>
+          <div class="field">
+            <label>Size</label>
+            <input type="text" id="fSize" placeholder='e.g. 24" × 30"'/>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Price</label>
+            <input type="text" id="fPrice" placeholder="e.g. $480"/>
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <select id="fCategory">
+              <option value="abstract">Abstract</option>
+              <option value="floral">Floral</option>
+              <option value="landscape">Landscape</option>
+              <option value="portrait">Portrait</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="fDesc" placeholder="Describe the painting, technique, inspiration…"></textarea>
+        </div>
+
+        <div class="available-toggle">
+          <label class="toggle">
+            <input type="checkbox" id="fAvailable" checked/>
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="toggle-label">Available for purchase</span>
+        </div>
+
+        <button class="save-btn" id="saveBtn" onclick="savePainting()">
+          <span id="saveBtnText">Save to Gallery</span>
+        </button>
+
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-bar-bg"><div class="progress-bar" id="progressBar"></div></div>
+          <div class="progress-text" id="progressText">Uploading…</div>
+        </div>
+      </div>
+
+      <!-- PAINTINGS LIST -->
+      <div class="list-card">
+        <h2>✦ Your Paintings</h2>
+        <div id="paintingsList"><div class="empty-list">Loading…</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ─────────────────────────────────────────
+  // CONFIG — change these two values!
+  // ─────────────────────────────────────────
+  const ADMIN_PASSWORD = 'artbyshri2024'; // ← Change this to your own password!
+  // GitHub settings are stored in localStorage after one-time setup
+  // ─────────────────────────────────────────
+
+  let paintings = [];
+  let selectedFile = null;
+
+  // ── Auth ──
+  function tryLogin() {
+    const pw = document.getElementById('passwordInput').value;
+    if (pw === ADMIN_PASSWORD) {
+      sessionStorage.setItem('adminAuth', '1');
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      loadConfig();
+      loadPaintings();
+    } else {
+      document.getElementById('loginError').style.display = 'block';
+      document.getElementById('passwordInput').value = '';
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem('adminAuth');
+    location.reload();
+  }
+
+  // Auto-login if session exists
+  if (sessionStorage.getItem('adminAuth')) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadConfig();
+    loadPaintings();
+  }
+
+  // ── GitHub config ──
+  function loadConfig() {
+    const u = localStorage.getItem('gh_username');
+    const r = localStorage.getItem('gh_repo');
+    const t = localStorage.getItem('gh_token');
+    if (u) document.getElementById('ghUsername').value = u;
+    if (r) document.getElementById('ghRepo').value = r;
+    if (t) document.getElementById('ghToken').value = t;
+    if (u && r && t) document.getElementById('setupBanner').style.display = 'none';
+  }
+
+  function saveGitHubConfig() {
+    const u = document.getElementById('ghUsername').value.trim();
+    const r = document.getElementById('ghRepo').value.trim();
+    const t = document.getElementById('ghToken').value.trim();
+    if (!u || !r || !t) { showToast('Please fill in all three fields.', 'error'); return; }
+    localStorage.setItem('gh_username', u);
+    localStorage.setItem('gh_repo', r);
+    localStorage.setItem('gh_token', t);
+    document.getElementById('setupBanner').style.display = 'none';
+    showToast('GitHub settings saved!', 'success');
+  }
+
+  function getConfig() {
+    return {
+      username: localStorage.getItem('gh_username'),
+      repo: localStorage.getItem('gh_repo'),
+      token: localStorage.getItem('gh_token')
+    };
+  }
+
+  // ── Load paintings.json from GitHub ──
+  async function loadPaintings() {
+    const { username, repo, token } = getConfig();
+    if (!username || !repo || !token) {
+      document.getElementById('paintingsList').innerHTML = '<div class="empty-list">Set up GitHub settings above first.</div>';
+      return;
+    }
+    try {
+      const r = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/paintings.json`, {
+        headers: { Authorization: `token ${token}` }
+      });
+      const data = await r.json();
+      paintings = JSON.parse(atob(data.content.replace(/\n/g,'')));
+      renderList();
+    } catch(e) {
+      document.getElementById('paintingsList').innerHTML = '<div class="empty-list">Could not load paintings. Check your GitHub settings.</div>';
+    }
+  }
+
+  function renderList() {
+    const el = document.getElementById('paintingsList');
+    if (!paintings.length) { el.innerHTML = '<div class="empty-list">No paintings yet. Add your first one!</div>'; return; }
+    el.innerHTML = paintings.map((p, i) => `
+      <div class="painting-item">
+        <div class="painting-thumb">
+          ${p.image ? `<img src="${p.image}" onerror="this.style.display='none'">` : '🎨'}
+        </div>
+        <div class="painting-info">
+          <div class="painting-name">${p.title}</div>
+          <div class="painting-meta">${p.medium} · ${p.size}</div>
+        </div>
+        <span class="painting-price">${p.price}</span>
+        <div class="status-dot ${p.available ? 'dot-available' : 'dot-sold'}" title="${p.available ? 'Available' : 'Sold'}"></div>
+        <button class="delete-btn" onclick="deletePainting(${i})">Remove</button>
+      </div>
+    `).join('');
+  }
+
+  // ── Image preview ──
+  function previewImage(input) {
+    selectedFile = input.files[0];
+    if (!selectedFile) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const prev = document.getElementById('imagePreview');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+      document.getElementById('imageDrop').style.display = 'none';
+    };
+    reader.readAsDataURL(selectedFile);
+  }
+
+  // ── Save painting ──
+  async function savePainting() {
+    const { username, repo, token } = getConfig();
+    if (!username || !repo || !token) {
+      showToast('Please complete GitHub setup first.', 'error'); return;
+    }
+
+    const title = document.getElementById('fTitle').value.trim();
+    const medium = document.getElementById('fMedium').value.trim();
+    const size = document.getElementById('fSize').value.trim();
+    const price = document.getElementById('fPrice').value.trim();
+    const category = document.getElementById('fCategory').value;
+    const desc = document.getElementById('fDesc').value.trim();
+    const available = document.getElementById('fAvailable').checked;
+
+    if (!title || !medium || !size || !price) {
+      showToast('Please fill in title, medium, size and price.', 'error'); return;
+    }
+
+    const btn = document.getElementById('saveBtn');
+    const progressWrap = document.getElementById('progressWrap');
+    btn.disabled = true;
+    progressWrap.style.display = 'block';
+
+    try {
+      let imagePath = '';
+
+      // Step 1: Upload image if selected
+      if (selectedFile) {
+        setProgress(20, 'Uploading image…');
+        const fileName = title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.' + selectedFile.name.split('.').pop();
+        const base64 = await fileToBase64(selectedFile);
+        const imgRes = await githubPut(username, repo, token, `images/${fileName}`, base64, `Add image: ${fileName}`);
+        if (!imgRes.ok) throw new Error('Image upload failed');
+        imagePath = `images/${fileName}`;
+      }
+
+      setProgress(60, 'Updating gallery…');
+
+      // Step 2: Get current paintings.json SHA
+      const jsonRes = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/paintings.json`, {
+        headers: { Authorization: `token ${token}` }
+      });
+      const jsonData = await jsonRes.json();
+      const sha = jsonData.sha;
+
+      // Step 3: Prepend new painting
+      const newPainting = { title, medium, size, price, category, description: desc, image: imagePath, available };
+      const updatedPaintings = [newPainting, ...paintings];
+      const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(updatedPaintings, null, 2))));
+
+      setProgress(80, 'Saving to gallery…');
+
+      const saveRes = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/paintings.json`, {
+        method: 'PUT',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Add painting: ${title}`, content: newContent, sha })
+      });
+
+      if (!saveRes.ok) throw new Error('Failed to save paintings.json');
+
+      setProgress(100, 'Done!');
+      paintings = updatedPaintings;
+      renderList();
+      resetForm();
+      showToast(`"${title}" added to your gallery! 🎨`, 'success');
+
+    } catch(e) {
+      showToast('Error: ' + e.message, 'error');
+    } finally {
+      btn.disabled = false;
+      setTimeout(() => { progressWrap.style.display = 'none'; setProgress(0,''); }, 2000);
+    }
+  }
+
+  // ── Delete painting ──
+  async function deletePainting(index) {
+    const p = paintings[index];
+    if (!confirm(`Remove "${p.title}" from the gallery?`)) return;
+
+    const { username, repo, token } = getConfig();
+    try {
+      const jsonRes = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/paintings.json`, {
+        headers: { Authorization: `token ${token}` }
+      });
+      const jsonData = await jsonRes.json();
+      const sha = jsonData.sha;
+      paintings.splice(index, 1);
+      const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(paintings, null, 2))));
+      await fetch(`https://api.github.com/repos/${username}/${repo}/contents/paintings.json`, {
+        method: 'PUT',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Remove painting: ${p.title}`, content: newContent, sha })
+      });
+      renderList();
+      showToast(`"${p.title}" removed.`, 'success');
+    } catch(e) {
+      showToast('Could not delete. Try again.', 'error');
+    }
+  }
+
+  // ── Helpers ──
+  async function githubPut(username, repo, token, path, base64Content, message) {
+    // Check if file exists (to get SHA for update)
+    let sha = undefined;
+    try {
+      const check = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`, {
+        headers: { Authorization: `token ${token}` }
+      });
+      if (check.ok) { const d = await check.json(); sha = d.sha; }
+    } catch(e) {}
+
+    return fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, content: base64Content, ...(sha ? { sha } : {}) })
+    });
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function setProgress(pct, text) {
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressText').textContent = text;
+  }
+
+  function resetForm() {
+    ['fTitle','fMedium','fSize','fPrice','fDesc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fCategory').value = 'abstract';
+    document.getElementById('fAvailable').checked = true;
+    document.getElementById('imagePreview').style.display = 'none';
+    document.getElementById('imageDrop').style.display = 'block';
+    document.getElementById('imageFile').value = '';
+    selectedFile = null;
+  }
+
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.className = `toast ${type} show`;
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+</script>
+</body>
+</html>
