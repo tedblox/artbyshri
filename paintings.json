@@ -1,62 +1,12 @@
 [
   {
-    "title": "Burst of Joy",
-    "medium": "Acrylic on Canvas",
-    "size": "24\" × 30\"",
-    "price": "$480",
+    "title": "Test3",
+    "medium": "acrlyc",
+    "size": "24x30",
+    "price": "400",
     "category": "abstract",
-    "description": "An explosion of warm hues capturing the pure feeling of joy. Thick impasto technique with palette knife textures.",
-    "image": "images/burst-of-joy.jpg",
-    "available": true
-  },
-  {
-    "title": "Garden Dream",
-    "medium": "Oil on Canvas",
-    "size": "20\" × 24\"",
-    "price": "$620",
-    "category": "floral",
-    "description": "Lush blooms rendered in rich oil paint, layered with glazes to achieve luminous depth and botanical beauty.",
-    "image": "images/garden-dream.jpg",
-    "available": true
-  },
-  {
-    "title": "Golden Hour",
-    "medium": "Acrylic on Board",
-    "size": "16\" × 20\"",
-    "price": "$390",
-    "category": "landscape",
-    "description": "The magic of late afternoon light across an open landscape — warm gold, long shadows, and peaceful stillness.",
-    "image": "images/golden-hour.jpg",
-    "available": false
-  },
-  {
-    "title": "Ocean Mind",
-    "medium": "Mixed Media",
-    "size": "30\" × 40\"",
-    "price": "$850",
-    "category": "abstract",
-    "description": "Layers of blue, teal and white evoke the calming, ever-moving nature of the ocean — introspective and vast.",
-    "image": "images/ocean-mind.jpg",
-    "available": true
-  },
-  {
-    "title": "Quiet Grace",
-    "medium": "Oil on Canvas",
-    "size": "18\" × 24\"",
-    "price": "$740",
-    "category": "portrait",
-    "description": "A contemplative portrait study exploring light and shadow on form — intimate, warm, and timeless.",
-    "image": "images/quiet-grace.jpg",
-    "available": true
-  },
-  {
-    "title": "Wild Bloom",
-    "medium": "Watercolour",
-    "size": "12\" × 16\"",
-    "price": "$280",
-    "category": "floral",
-    "description": "Loose, expressive watercolour florals — spontaneous brushwork that celebrates the wildness of nature in bloom.",
-    "image": "images/wild-bloom.jpg",
+    "description": "",
+    "image": "images/test3.jpeg",
     "available": true
   }
 ]
