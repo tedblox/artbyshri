@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Art by Shri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral:   #FF6B5B;
+      --yellow:  #FFD166;
+      --teal:    #06D6A0;
+      --navy:    #1A1A2E;
+      --cream:   #FFFBF2;
+      --ink:     #2D2D2D;
+      --soft:    #F7F0E6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── Custom cursor ── */
+    .cursor {
+      width: 14px; height: 14px;
+      background: var(--coral);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .15s ease, background .2s;
+      z-index: 9999;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      width: 38px; height: 38px;
+      border: 2px solid var(--coral);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .35s ease, border-color .2s;
+      z-index: 9998;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(255,251,242,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1.5px solid rgba(255,107,91,0.12);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--coral);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--navy); }
+    nav ul { list-style: none; display: flex; gap: 36px; }
+    nav ul a {
+      text-decoration: none;
+      font-size: .9rem; font-weight: 500;
+      color: var(--ink);
+      position: relative;
+      transition: color .2s;
+    }
+    nav ul a::after {
+      content:''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--coral);
+      transition: width .3s ease;
+    }
+    nav ul a:hover { color: var(--coral); }
+    nav ul a:hover::after { width: 100%; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-shapes {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); opacity: .25;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--coral); top: -100px; right: -100px; animation: drift 8s ease-in-out infinite alternate; }
+    .blob-2 { width: 350px; height: 350px; background: var(--yellow); bottom: -80px; left: 10%; animation: drift 11s ease-in-out infinite alternate-reverse; }
+    .blob-3 { width: 280px; height: 280px; background: var(--teal); top: 40%; right: 20%; animation: drift 9s ease-in-out infinite alternate; }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,20px) scale(1.08); } }
+
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-size: .78rem; font-weight: 500; letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeUp .7s ease both;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.05;
+      color: var(--navy);
+      animation: fadeUp .8s .1s ease both;
+    }
+    h1 em { color: var(--coral); font-style: italic; }
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 1.1rem; font-weight: 300; line-height: 1.7;
+      color: #555;
+      max-width: 480px;
+      animation: fadeUp .8s .2s ease both;
+    }
+    .hero-cta {
+      margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp .8s .3s ease both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 100px;
+      font-size: .95rem; font-weight: 500;
+      text-decoration: none; border: none; cursor: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      background: var(--coral); color: #fff;
+      box-shadow: 0 8px 24px rgba(255,107,91,.35);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 32px rgba(255,107,91,.45); }
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+    .btn-ghost:hover { background: var(--navy); color: #fff; }
+
+    .hero-float {
+      position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+      z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      animation: fadeUp .9s .2s ease both;
+    }
+    .hero-float-card {
+      width: 180px; height: 220px;
+      border-radius: 18px; overflow: hidden;
+      background: var(--soft);
+      box-shadow: 0 16px 40px rgba(0,0,0,.1);
+      position: relative;
+    }
+    .hero-float-card:nth-child(2) { margin-top: 32px; }
+    .hero-float-card:nth-child(3) { margin-top: -16px; }
+    .hero-float-card:nth-child(4) { margin-top: 16px; }
+    .hero-float-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .hero-float-card:hover img { transform: scale(1.05); }
+    .hero-float-card .placeholder-art {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .hf1 { background: linear-gradient(135deg,#FFD166,#FF6B5B); }
+    .hf2 { background: linear-gradient(135deg,#06D6A0,#118AB2); }
+    .hf3 { background: linear-gradient(135deg,#EF476F,#FFD166); }
+    .hf4 { background: linear-gradient(135deg,#073B4C,#06D6A0); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section shared ── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: .78rem; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--coral);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy); line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem; font-weight: 300; color: #666;
+      max-width: 480px; line-height: 1.7;
+    }
+
+    /* ── Gallery ── */
+    #gallery { background: var(--soft); }
+    .gallery-header {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 24px; margin-bottom: 56px;
+    }
+    .gallery-filter {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 100px;
+      border: 2px solid transparent;
+      font-size: .85rem; font-weight: 500;
+      background: #fff; color: var(--ink);
+      cursor: none; transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--coral); color: #fff;
+      border-color: var(--coral);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .art-card {
+      border-radius: 20px; overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      transition: transform .3s ease, box-shadow .3s ease;
+      cursor: none;
+      position: relative;
+    }
+    .art-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.12);
+    }
+    .art-card-img {
+      width: 100%; aspect-ratio: 4/3;
+      overflow: hidden; position: relative;
+    }
+    .art-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .art-card:hover .art-card-img img { transform: scale(1.07); }
+    .art-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center;
+      justify-content: center; font-size: 3.5rem;
+    }
+    .art-card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(26,26,46,.75);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .art-card:hover .art-card-overlay { opacity: 1; }
+    .overlay-btn {
+      padding: 10px 24px; border-radius: 100px;
+      background: var(--yellow); color: var(--navy);
+      font-size: .85rem; font-weight: 500;
+      text-decoration: none; border: none; cursor: none;
+      transition: transform .2s;
+    }
+    .overlay-btn:hover { transform: scale(1.05); }
+    .overlay-btn.ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,.6);
+      color: #fff;
+    }
+    .art-card-body { padding: 20px 22px 24px; }
+    .art-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .art-card-meta {
+      font-size: .82rem; color: #888;
+      margin-bottom: 14px;
+    }
+    .art-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .art-price {
+      font-size: 1.1rem; font-weight: 500; color: var(--coral);
+    }
+    .art-status {
+      font-size: .78rem; padding: 4px 12px; border-radius: 100px;
+      font-weight: 500;
+    }
+    .status-available { background: rgba(6,214,160,.15); color: #048a67; }
+    .status-sold { background: rgba(255,107,91,.12); color: var(--coral); }
+
+    /* Add your own artwork notice */
+    .upload-notice {
+      margin-top: 48px;
+      border: 2px dashed rgba(255,107,91,.4);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      background: rgba(255,209,102,.05);
+    }
+    .upload-notice h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--navy); margin-bottom: 8px;
+    }
+    .upload-notice p { font-size: .9rem; color: #888; line-height: 1.6; }
+    .upload-notice code {
+      background: #fff; border: 1px solid #ddd;
+      padding: 2px 8px; border-radius: 6px;
+      font-size: .85rem; color: var(--coral);
+    }
+
+    /* ── About ── */
+    #about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-wrap {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 28px; overflow: hidden;
+      background: linear-gradient(135deg, var(--yellow), var(--coral));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem;
+      box-shadow: 0 24px 60px rgba(255,107,91,.2);
+    }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-accent {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: var(--teal); opacity: .2;
+    }
+    .about-accent2 {
+      position: absolute; top: -16px; left: -16px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--yellow); opacity: .5;
+    }
+    .about-text .section-sub { max-width: 100%; }
+    .about-text p { margin-top: 16px; font-size: 1rem; line-height: 1.8; color: #555; }
+    .about-stats {
+      display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 700; color: var(--coral);
+      line-height: 1;
+    }
+    .stat-label { font-size: .82rem; color: #888; margin-top: 4px; }
+
+    /* ── Contact ── */
+    #contact { background: var(--navy); color: #fff; }
+    #contact .section-label { color: var(--yellow); }
+    #contact .section-title { color: #fff; }
+    #contact .section-sub { color: rgba(255,255,255,.6); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; margin-top: 56px; align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; margin-bottom: 20px; color: #fff;
+    }
+    .contact-info p { font-size: .95rem; color: rgba(255,255,255,.65); line-height: 1.8; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 14px;
+      margin-top: 24px; font-size: .92rem;
+      color: rgba(255,255,255,.8);
+    }
+    .contact-detail-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .ci-yellow { background: rgba(255,209,102,.15); }
+    .ci-coral  { background: rgba(255,107,91,.15); }
+    .ci-teal   { background: rgba(6,214,160,.15); }
+
+    form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    label { font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .5px; }
+    input, textarea, select {
+      background: rgba(255,255,255,.07);
+      border: 1.5px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      transition: border-color .2s, background .2s;
+      outline: none;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.3); }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--yellow);
+      background: rgba(255,255,255,.1);
+    }
+    select option { background: var(--navy); color: #fff; }
+    textarea { resize: vertical; min-height: 130px; }
+    .submit-btn {
+      background: var(--coral);
+      color: #fff; border: none;
+      padding: 16px 40px; border-radius: 100px;
+      font-size: .95rem; font-weight: 500;
+      cursor: none;
+      transition: transform .2s, box-shadow .2s;
+      align-self: flex-start;
+      box-shadow: 0 8px 24px rgba(255,107,91,.3);
+    }
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(255,107,91,.45);
+    }
+    .form-success {
+      display: none;
+      background: rgba(6,214,160,.1);
+      border: 1.5px solid rgba(6,214,160,.3);
+      border-radius: 12px; padding: 20px 24px;
+      color: var(--teal); font-size: .95rem;
+      text-align: center;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #0f0f1f;
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      color: rgba(255,255,255,.4); font-size: .82rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 900; color: var(--coral);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(15,15,31,.92);
+      align-items: center; justify-content: center;
+      padding: 32px;
+    }
+    .lightbox.open { display: flex; }
+    .lb-inner {
+      background: #fff; border-radius: 24px;
+      max-width: 700px; width: 100%; overflow: hidden;
+      animation: lbIn .3s ease;
+    }
+    @keyframes lbIn { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .lb-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem; overflow: hidden;
+    }
+    .lb-img img { width: 100%; height: 100%; object-fit: cover; }
+    .lb-body { padding: 28px 32px; }
+    .lb-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--navy); margin-bottom: 8px;
+    }
+    .lb-meta { font-size: .88rem; color: #999; margin-bottom: 16px; }
+    .lb-desc { font-size: .95rem; color: #555; line-height: 1.7; margin-bottom: 24px; }
+    .lb-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .lb-price { font-size: 1.4rem; font-weight: 500; color: var(--coral); font-family: 'Playfair Display', serif; }
+    .lb-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      border: none; color: #fff; font-size: 1.4rem;
+      cursor: none; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-close:hover { background: var(--coral); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav ul { gap: 20px; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-float { display: none; }
+      section { padding: 80px 24px; }
+      #about { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 24px; }
+    }
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">art<span>by</span>shri</div>
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary" style="padding:10px 24px;font-size:.85rem;">Enquire to Buy</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag">✦ Original Fine Art Paintings</span>
+      <h1>Where colour<br><em>tells stories</em></h1>
+      <p class="hero-sub">Each painting is a one-of-a-kind original — vibrant, expressive, and made with love. Available for purchase and shipped worldwide.</p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-primary">View Gallery</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-float">
+      <div class="hero-float-card"><div class="placeholder-art hf1">🎨</div></div>
+      <div class="hero-float-card"><div class="placeholder-art hf2">🖌️</div></div>
+      <div class="hero-float-card"><div class="placeholder-art hf3">🌸</div></div>
+      <div class="hero-float-card"><div class="placeholder-art hf4">✨</div></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <div>
+        <div class="section-label">✦ Portfolio</div>
+        <h2 class="section-title">Original Paintings</h2>
+        <p class="section-sub">Each piece is a unique original. Click any painting to learn more or enquire about purchasing.</p>
+      </div>
+      <div class="gallery-filter">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+        <button class="filter-btn" onclick="filterGallery('abstract', this)">Abstract</button>
+        <button class="filter-btn" onclick="filterGallery('landscape', this)">Landscape</button>
+        <button class="filter-btn" onclick="filterGallery('floral', this)">Floral</button>
+        <button class="filter-btn" onclick="filterGallery('portrait', this)">Portrait</button>
+      </div>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- PAINTING CARDS — edit title, medium, size, price, category, emoji/image src -->
+
+      <div class="art-card" data-category="abstract" data-title="Burst of Joy" data-medium="Acrylic on Canvas" data-size='24" × 30"' data-price="$480" data-desc="An explosion of warm hues capturing the pure feeling of joy. Thick impasto technique with palette knife textures." data-status="available">
+        <div class="art-card-img">
+          <!-- Replace the div below with: <img src="images/burst-of-joy.jpg" alt="Burst of Joy"> -->
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#FF6B5B,#FFD166)">🎨</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+            <a href="#contact" class="overlay-btn ghost">Enquire to Buy</a>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Burst of Joy</div>
+          <div class="art-card-meta">Acrylic on Canvas · 24" × 30"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$480</span>
+            <span class="art-status status-available">Available</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" data-category="floral" data-title="Garden Dream" data-medium="Oil on Canvas" data-size='20" × 24"' data-price="$620" data-desc="Lush blooms rendered in rich oil paint, layered with glazes to achieve luminous depth and botanical beauty." data-status="available">
+        <div class="art-card-img">
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#06D6A0,#FFD166)">🌸</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+            <a href="#contact" class="overlay-btn ghost">Enquire to Buy</a>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Garden Dream</div>
+          <div class="art-card-meta">Oil on Canvas · 20" × 24"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$620</span>
+            <span class="art-status status-available">Available</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" data-category="landscape" data-title="Golden Hour" data-medium="Acrylic on Board" data-size='16" × 20"' data-price="$390" data-desc="The magic of late afternoon light across an open landscape — warm gold, long shadows, and peaceful stillness." data-status="sold">
+        <div class="art-card-img">
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#FFD166,#EF476F)">🌅</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Golden Hour</div>
+          <div class="art-card-meta">Acrylic on Board · 16" × 20"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$390</span>
+            <span class="art-status status-sold">Sold</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" data-category="abstract" data-title="Ocean Mind" data-medium="Mixed Media" data-size='30" × 40"' data-price="$850" data-desc="Layers of blue, teal and white evoke the calming, ever-moving nature of the ocean — introspective and vast." data-status="available">
+        <div class="art-card-img">
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#118AB2,#06D6A0)">🌊</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+            <a href="#contact" class="overlay-btn ghost">Enquire to Buy</a>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Ocean Mind</div>
+          <div class="art-card-meta">Mixed Media · 30" × 40"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$850</span>
+            <span class="art-status status-available">Available</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" data-category="portrait" data-title="Quiet Grace" data-medium="Oil on Canvas" data-size='18" × 24"' data-price="$740" data-desc="A contemplative portrait study exploring light and shadow on form — intimate, warm, and timeless." data-status="available">
+        <div class="art-card-img">
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#EF476F,#073B4C)">🎭</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+            <a href="#contact" class="overlay-btn ghost">Enquire to Buy</a>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Quiet Grace</div>
+          <div class="art-card-meta">Oil on Canvas · 18" × 24"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$740</span>
+            <span class="art-status status-available">Available</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="art-card" data-category="floral" data-title="Wild Bloom" data-medium="Watercolour" data-size='12" × 16"' data-price="$280" data-desc="Loose, expressive watercolour florals — spontaneous brushwork that celebrates the wildness of nature in bloom." data-status="available">
+        <div class="art-card-img">
+          <div class="art-placeholder" style="background:linear-gradient(135deg,#FF6B5B,#EF476F)">🌺</div>
+          <div class="art-card-overlay">
+            <button class="overlay-btn" onclick="openLightbox(this.closest('.art-card'))">View Details</button>
+            <a href="#contact" class="overlay-btn ghost">Enquire to Buy</a>
+          </div>
+        </div>
+        <div class="art-card-body">
+          <div class="art-card-title">Wild Bloom</div>
+          <div class="art-card-meta">Watercolour · 12" × 16"</div>
+          <div class="art-card-footer">
+            <span class="art-price">$280</span>
+            <span class="art-status status-available">Available</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- HOW TO ADD YOUR OWN IMAGES -->
+    <div class="upload-notice">
+      <h3>🖼️ Adding Your Real Paintings</h3>
+      <p>
+        Create an <code>images/</code> folder next to this file and add your photos.<br>
+        Then replace any <code>&lt;div class="art-placeholder"&gt;</code> with <code>&lt;img src="images/your-photo.jpg" alt="Painting name"&gt;</code><br>
+        Also update the title, medium, size, price and description in each card's <code>data-</code> attributes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-visual">
+      <div class="about-img-wrap">
+        <!-- Replace with: <img src="images/shri-portrait.jpg" alt="Shri"> -->
+        🎨
+      </div>
+      <div class="about-accent"></div>
+      <div class="about-accent2"></div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">✦ The Artist</div>
+      <h2 class="section-title">Hello, I'm Shri</h2>
+      <p class="section-sub">Painter, colourist, and lover of all things vibrant.</p>
+      <p>I create original paintings that celebrate joy, colour, and the beauty of everyday moments. Each piece is hand-painted with love and intention — no prints, no reproductions, just one-of-a-kind originals.</p>
+      <p>My work spans abstract expressionism, florals, and landscapes — always bold, always full of life. I ship worldwide and welcome commissions.</p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Originals Sold</div>
+        </div>
+        <div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">Countries Shipped</div>
+        </div>
+        <div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Happy Collectors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">✦ Get in Touch</div>
+    <h2 class="section-title">Love a piece?<br>Let's make it yours.</h2>
+    <p class="section-sub">Fill in the form and I'll get back to you within 24 hours with availability, shipping details, and payment options.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Commission &amp; Purchase Enquiries</h3>
+        <p>Whether you're interested in an existing piece, want a custom commission, or just want to say hello — I'd love to hear from you.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon ci-yellow">📧</div>
+          <span>hello@artbyshri.com</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon ci-coral">🌏</div>
+          <span>Ships worldwide from Australia</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon ci-teal">📦</div>
+          <span>Professionally packed &amp; insured</span>
+        </div>
+      </div>
+
+      <div>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="jane@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Which painting interests you?</label>
+            <select>
+              <option value="">— Select a painting —</option>
+              <option>Burst of Joy</option>
+              <option>Garden Dream</option>
+              <option>Ocean Mind</option>
+              <option>Quiet Grace</option>
+              <option>Wild Bloom</option>
+              <option>Custom Commission</option>
+              <option>Other / Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about yourself, where the painting will live, or what you have in mind for a commission…"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Enquiry ✦</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          🎉 Thank you! I've received your message and will be in touch within 24 hours.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">artbyshri</div>
+    <span>© 2025 Art by Shri. All rights reserved. Original paintings only.</span>
+    <span>artbyshri.com</span>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <div class="lb-inner">
+      <div class="lb-img" id="lbImg"></div>
+      <div class="lb-body">
+        <div class="lb-title" id="lbTitle"></div>
+        <div class="lb-meta" id="lbMeta"></div>
+        <div class="lb-desc" id="lbDesc"></div>
+        <div class="lb-footer">
+          <span class="lb-price" id="lbPrice"></span>
+          <a href="#contact" class="btn btn-primary" onclick="closeLightbox()">Enquire to Buy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Custom cursor ──
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+      ring.style.left   = e.clientX + 'px';
+      ring.style.top    = e.clientY + 'px';
+    });
+    document.querySelectorAll('a,button,.art-card,.filter-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1.8)'; ring.style.transform = 'translate(-50%,-50%) scale(1.4)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)';   ring.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    });
+
+    // ── Gallery filter ──
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.art-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+      });
+    }
+
+    // ── Lightbox ──
+    function openLightbox(card) {
+      const lb = document.getElementById('lightbox');
+      const imgEl = card.querySelector('.art-placeholder, img');
+      const lbImg = document.getElementById('lbImg');
+      lbImg.innerHTML = imgEl.tagName === 'IMG'
+        ? `<img src="${imgEl.src}" alt="${card.dataset.title}">`
+        : `<div class="art-placeholder" style="${imgEl.style.cssText}">${imgEl.innerHTML}</div>`;
+      document.getElementById('lbTitle').textContent = card.dataset.title;
+      document.getElementById('lbMeta').textContent  = card.dataset.medium + ' · ' + card.dataset.size;
+      document.getElementById('lbDesc').textContent  = card.dataset.desc;
+      document.getElementById('lbPrice').textContent = card.dataset.price;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeLightboxOutside(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+
+    // ── Contact form ──
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // ── Scroll animations ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.art-card, .about-visual, .about-text').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(32px)';
+      el.style.transition = 'opacity .6s ease, transform .6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
