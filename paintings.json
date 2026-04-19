@@ -6,7 +6,7 @@
     "price": "$320",
     "category": "floral",
     "description": "A vibrant bouquet bursts against a deep crimson-to-purple gradient background, with sunflowers, daisies and roses painted in bold impasto strokes full of joy and energy.",
-    "image": "images/midnight-garden.jpg",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.16 PM (1).jpeg",
     "available": true
   },
   {
@@ -15,8 +15,8 @@
     "size": "12\" × 24\"",
     "price": "$380",
     "category": "floral",
-    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals rendered in impasto technique — elegant and deeply spiritual.",
-    "image": "images/sacred-lotus.jpg",
+    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals — elegant and deeply spiritual.",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.16 PM (2).jpeg",
     "available": true
   },
   {
@@ -26,7 +26,7 @@
     "price": "$350",
     "category": "landscape",
     "description": "Wildflowers dance under a sweeping pastel sky at dusk, with bees and butterflies caught mid-flight above a meadow of lupins, daisies and cosmos in soft dreamlike colours.",
-    "image": "images/twilight-meadow.jpg",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.16 PM.jpeg",
     "available": true
   },
   {
@@ -36,7 +36,7 @@
     "price": "$750",
     "category": "landscape",
     "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet — pure joy on canvas.",
-    "image": "images/hummingbird-sunrise.jpg",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (1).jpeg",
     "available": true
   },
   {
@@ -46,7 +46,7 @@
     "price": "$680",
     "category": "landscape",
     "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers — fresh, light and full of summer calm.",
-    "image": "images/summer-serenade.jpg",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (2).jpeg",
     "available": true
   },
   {
@@ -55,8 +55,8 @@
     "size": "18\" × 24\"",
     "price": "$420",
     "category": "floral",
-    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky — a lush, energetic celebration of the English countryside garden.",
-    "image": "images/daisies-foxglove.jpg",
+    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky — a lush energetic celebration of the garden in full bloom.",
+    "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM.jpeg",
     "available": true
   }
 ]
