@@ -1,22 +1,62 @@
 [
   {
-    "title": "Test4",
-    "medium": "Acrlic",
-    "size": "24x22",
-    "price": "400",
-    "category": "abstract",
-    "description": "",
-    "image": "images/test4.jpeg",
+    "title": "Midnight Garden",
+    "medium": "Acrylic on Canvas",
+    "size": "18\" × 24\"",
+    "price": "$320",
+    "category": "floral",
+    "description": "A vibrant bouquet bursts against a deep crimson-to-purple gradient background, with sunflowers, daisies and roses painted in bold impasto strokes full of joy and energy.",
+    "image": "images/midnight-garden.jpg",
     "available": true
   },
   {
-    "title": "Test3",
-    "medium": "acrlyc",
-    "size": "24x30",
-    "price": "400",
-    "category": "abstract",
-    "description": "",
-    "image": "images/test3.jpeg",
+    "title": "Sacred Lotus",
+    "medium": "Acrylic on Canvas",
+    "size": "12\" × 24\"",
+    "price": "$380",
+    "category": "floral",
+    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals rendered in impasto technique — elegant and deeply spiritual.",
+    "image": "images/sacred-lotus.jpg",
+    "available": true
+  },
+  {
+    "title": "Twilight Meadow",
+    "medium": "Acrylic on Canvas",
+    "size": "18\" × 24\"",
+    "price": "$350",
+    "category": "landscape",
+    "description": "Wildflowers dance under a sweeping pastel sky at dusk, with bees and butterflies caught mid-flight above a meadow of lupins, daisies and cosmos in soft dreamlike colours.",
+    "image": "images/twilight-meadow.jpg",
+    "available": true
+  },
+  {
+    "title": "Hummingbird Sunrise",
+    "medium": "Acrylic on Canvas",
+    "size": "30\" × 40\"",
+    "price": "$750",
+    "category": "landscape",
+    "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet — pure joy on canvas.",
+    "image": "images/hummingbird-sunrise.jpg",
+    "available": true
+  },
+  {
+    "title": "Summer Serenade",
+    "medium": "Acrylic on Canvas",
+    "size": "30\" × 40\"",
+    "price": "$680",
+    "category": "landscape",
+    "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers — fresh, light and full of summer calm.",
+    "image": "images/summer-serenade.jpg",
+    "available": true
+  },
+  {
+    "title": "Daisies & Foxglove",
+    "medium": "Acrylic on Canvas",
+    "size": "18\" × 24\"",
+    "price": "$420",
+    "category": "floral",
+    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky — a lush, energetic celebration of the English countryside garden.",
+    "image": "images/daisies-foxglove.jpg",
     "available": true
   }
 ]
