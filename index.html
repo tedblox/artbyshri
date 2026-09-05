@@ -36,7 +36,7 @@
     "name": "Art by Shri",
     "description": "Original hand-painted acrylic artworks — floral, landscape and abstract paintings available for sale and commission. Shipped worldwide from Australia.",
     "url": "https://artbyshri.com",
-    "logo": "https://artbyshri.com/images/shri.jpg",
+    "logo": "https://artbyshri.com/images/shri.png",
     "image": "https://artbyshri.com/images/meadow-sunset.jpg",
     "priceRange": "$$",
     "areaServed": "Australia",
@@ -50,7 +50,7 @@
   </script>
 
   <meta name="google-site-verification" content="J1751d6hGUGFclSU3_2o5oDwFir0IjZn9L3cTqeTdPQ"/>
-  <link rel="icon" type="image/png" href="images/shri.jpg"/>
+  <link rel="icon" type="image/png" href="images/shri.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 
   <style>
@@ -210,7 +210,9 @@
     /* ── ABOUT ── */
     .about-section{display:grid;grid-template-columns:1fr 1fr;background:var(--blush-pale)}
     .about-img-col{position:relative;min-height:560px;overflow:hidden}
-    .about-img-col img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block}
+    .about-img-col img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .about-img-backdrop{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(18px);transform:scale(1.1);z-index:0}
+    .about-img-main{position:relative;z-index:1;width:100%;height:100%;object-fit:contain !important}
     .about-img-swatch{width:100%;height:100%;min-height:560px;background:linear-gradient(160deg,#E8C8A0,#C09060,#A07848)}
     .about-content{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
     .about-eyebrow{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:.75rem;display:block}
@@ -502,7 +504,10 @@
 <!-- ABOUT -->
 <div class="about-section" id="about">
   <div class="about-img-col">
-    <img src="images/shri.jpg" alt="Shri — artist with her wildflower painting" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="about-img-backdrop" id="aboutBackdrop"></div>
+    <img class="about-img-main" src="images/shri.png" alt="Shri — artist with her wildflower painting"
+      onerror="this.src='images/shri.jpg';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='block'}"
+      onload="document.getElementById('aboutBackdrop').style.backgroundImage='url('+this.src+')'">
     <div class="about-img-swatch sw-about" style="display:none"></div>
   </div>
   <div class="about-content">
