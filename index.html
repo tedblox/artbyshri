@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO -->
   <title>Art by Shri | Original Acrylic Paintings for Sale | Australia</title>
   <meta name="description" content="Shop original hand-painted acrylic artworks by Shri — floral, landscape and abstract paintings available for sale. Unique Australian art shipped worldwide. Commission a custom painting today."/>
   <meta name="keywords" content="original paintings for sale Australia, acrylic floral paintings, Australian artist, handmade art, buy original art online, floral paintings, landscape paintings, art commissions Australia, unique wall art"/>
   <meta name="author" content="Shri"/>
   <link rel="canonical" href="https://artbyshri.com/"/>
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://artbyshri.com/"/>
   <meta property="og:title" content="Art by Shri | Original Acrylic Paintings for Sale"/>
@@ -17,10 +21,14 @@
   <meta property="og:image:height" content="630"/>
   <meta property="og:locale" content="en_AU"/>
   <meta property="og:site_name" content="Art by Shri"/>
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Art by Shri | Original Paintings for Sale"/>
   <meta name="twitter:description" content="One-of-a-kind original paintings — vibrant florals, landscapes and abstracts. Handmade in Australia, shipped worldwide."/>
   <meta name="twitter:image" content="https://artbyshri.com/images/meadow-sunset.jpg"/>
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,428 +48,747 @@
     "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "AUD" }
   }
   </script>
-  <meta name="google-site-verification" content="J1751d6hGUGFclSU3_2o5oDwFir0IjZn9L3cTqeTdPQ" />
+
+  <meta name="google-site-verification" content="J1751d6hGUGFclSU3_2o5oDwFir0IjZn9L3cTqeTdPQ"/>
   <link rel="icon" type="image/png" href="images/shri.jpg"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --coral: #FF6B5B; --yellow: #FFD166; --teal: #06D6A0;
-      --navy: #1A1A2E; --cream: #FFFBF2; --ink: #2D2D2D; --soft: #F7F0E6;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blush:#C4826A;
+      --blush-light:#F0D8CC;
+      --blush-pale:#FAF3EF;
+      --cream:#FDFAF7;
+      --warm-white:#FFFEF9;
+      --dark:#2A1A10;
+      --text:#3A2A1A;
+      --muted:#9A8A7A;
+      --border:#E8E0D8;
+      --border-light:#F0EAE4;
+      --green:#4A8C5C;
+      --green-light:#EAF3EA;
+      --font-serif:'Cormorant Garamond',serif;
+      --font-sans:'Jost',sans-serif;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; cursor: none; }
-    .cursor { width: 14px; height: 14px; background: var(--coral); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; transform: translate(-50%,-50%); transition: transform .15s ease; z-index: 9999; mix-blend-mode: multiply; }
-    .cursor-ring { width: 38px; height: 38px; border: 2px solid var(--coral); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; transform: translate(-50%,-50%); transition: transform .35s ease; z-index: 9998; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(255,251,242,0.88); backdrop-filter: blur(12px); border-bottom: 1.5px solid rgba(255,107,91,0.12); }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--coral); }
-    .nav-logo span { color: var(--navy); }
-    nav ul { list-style: none; display: flex; gap: 36px; }
-    nav ul a { text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--ink); position: relative; transition: color .2s; }
-    nav ul a::after { content:''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--coral); transition: width .3s ease; }
-    nav ul a:hover { color: var(--coral); }
-    nav ul a:hover::after { width: 100%; }
-    .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 48px 80px; position: relative; overflow: hidden; }
-    .hero-bg-shapes { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .25; }
-    .blob-1 { width: 500px; height: 500px; background: var(--coral); top: -100px; right: -100px; animation: drift 8s ease-in-out infinite alternate; }
-    .blob-2 { width: 350px; height: 350px; background: var(--yellow); bottom: -80px; left: 10%; animation: drift 11s ease-in-out infinite alternate-reverse; }
-    .blob-3 { width: 280px; height: 280px; background: var(--teal); top: 40%; right: 20%; animation: drift 9s ease-in-out infinite alternate; }
-    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,20px) scale(1.08); } }
-    .hero-content { position: relative; z-index: 1; max-width: 680px; }
-    .hero-tag { display: inline-block; background: var(--yellow); color: var(--navy); font-size: .78rem; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; animation: fadeUp .7s ease both; }
-    h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); line-height: 1.05; color: var(--navy); animation: fadeUp .8s .1s ease both; }
-    h1 em { color: var(--coral); font-style: italic; }
-    .hero-sub { margin-top: 24px; font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: #555; max-width: 480px; animation: fadeUp .8s .2s ease both; }
-    .hero-cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp .8s .3s ease both; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 100px; font-size: .95rem; font-weight: 500; text-decoration: none; border: none; cursor: none; transition: transform .2s, box-shadow .2s; }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary { background: var(--coral); color: #fff; box-shadow: 0 8px 24px rgba(255,107,91,.35); }
-    .btn-primary:hover { box-shadow: 0 12px 32px rgba(255,107,91,.45); }
-    .btn-ghost { background: transparent; border: 2px solid var(--navy); color: var(--navy); }
-    .btn-ghost:hover { background: var(--navy); color: #fff; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    section { padding: 100px 48px; }
-    .section-label { font-size: .78rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
-    .section-sub { font-size: 1rem; font-weight: 300; color: #666; max-width: 480px; line-height: 1.7; }
-    #gallery { background: var(--soft); }
-    .gallery-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 56px; }
-    .gallery-filter { display: flex; gap: 10px; flex-wrap: wrap; }
-    .filter-btn { padding: 8px 20px; border-radius: 100px; border: 2px solid transparent; font-size: .85rem; font-weight: 500; background: #fff; color: var(--ink); cursor: none; transition: all .2s; }
-    .filter-btn.active, .filter-btn:hover { background: var(--coral); color: #fff; border-color: var(--coral); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .art-card { border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,.06); transition: transform .3s ease, box-shadow .3s ease; cursor: none; opacity: 0; transform: translateY(32px); }
-    .art-card.visible { opacity: 1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
-    .art-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(0,0,0,.12); }
-    .art-card-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; position: relative; background: var(--soft); }
-    .art-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-    .art-card:hover .art-card-img img { transform: scale(1.07); }
-    .art-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
-    .art-card-overlay { position: absolute; inset: 0; background: rgba(26,26,46,.75); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; opacity: 0; transition: opacity .3s; }
-    .art-card:hover .art-card-overlay { opacity: 1; }
-    .overlay-btn { padding: 10px 24px; border-radius: 100px; background: var(--yellow); color: var(--navy); font-size: .85rem; font-weight: 500; text-decoration: none; border: none; cursor: none; transition: transform .2s; }
-    .overlay-btn:hover { transform: scale(1.05); }
-    .overlay-btn.ghost { background: transparent; border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
-    .art-card-body { padding: 20px 22px 24px; }
-    .art-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
-    .art-card-meta { font-size: .82rem; color: #888; margin-bottom: 14px; }
-    .art-card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .art-price { font-size: 1.1rem; font-weight: 500; color: var(--coral); }
-    .art-status { font-size: .78rem; padding: 4px 12px; border-radius: 100px; font-weight: 500; }
-    .status-available { background: rgba(6,214,160,.15); color: #048a67; }
-    .status-sold { background: rgba(255,107,91,.12); color: var(--coral); }
-    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-img-wrap { width: 100%; aspect-ratio: 3/4; border-radius: 28px; overflow: hidden; background: linear-gradient(135deg, var(--yellow), var(--coral)); display: flex; align-items: center; justify-content: center; font-size: 6rem; box-shadow: 0 24px 60px rgba(255,107,91,.2); }
-    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-    .about-visual { position: relative; }
-    .about-accent { position: absolute; bottom: -20px; right: -20px; width: 140px; height: 140px; border-radius: 50%; background: var(--teal); opacity: .2; }
-    .about-accent2 { position: absolute; top: -16px; left: -16px; width: 80px; height: 80px; border-radius: 50%; background: var(--yellow); opacity: .5; }
-    .about-text p { margin-top: 16px; font-size: 1rem; line-height: 1.8; color: #555; }
-    .about-stats { display: flex; gap: 40px; margin-top: 40px; flex-wrap: wrap; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--coral); line-height: 1; }
-    .stat-label { font-size: .82rem; color: #888; margin-top: 4px; }
-    #contact { background: var(--navy); color: #fff; }
-    #contact .section-label { color: var(--yellow); }
-    #contact .section-title { color: #fff; }
-    #contact .section-sub { color: rgba(255,255,255,.6); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 56px; align-items: start; }
-    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 20px; color: #fff; }
-    .contact-info p { font-size: .95rem; color: rgba(255,255,255,.65); line-height: 1.8; }
-    .contact-detail { display: flex; align-items: center; gap: 14px; margin-top: 24px; font-size: .92rem; color: rgba(255,255,255,.8); }
-    .contact-detail-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-    .ci-yellow { background: rgba(255,209,102,.15); }
-    .ci-coral  { background: rgba(255,107,91,.15); }
-    .ci-teal   { background: rgba(6,214,160,.15); }
-    form { display: flex; flex-direction: column; gap: 18px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    label { font-size: .82rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .5px; }
-    input, textarea, select { background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px; padding: 14px 18px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: .95rem; transition: border-color .2s; outline: none; }
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.3); }
-    input:focus, textarea:focus, select:focus { border-color: var(--yellow); background: rgba(255,255,255,.1); }
-    select option { background: var(--navy); color: #fff; }
-    textarea { resize: vertical; min-height: 130px; }
-    .submit-btn { background: var(--coral); color: #fff; border: none; padding: 16px 40px; border-radius: 100px; font-size: .95rem; font-weight: 500; cursor: none; transition: transform .2s, box-shadow .2s; align-self: flex-start; box-shadow: 0 8px 24px rgba(255,107,91,.3); }
-    .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(255,107,91,.45); }
-    .submit-btn:disabled { opacity: .6; transform: none; cursor: not-allowed; }
-    .form-success { display: none; background: rgba(6,214,160,.1); border: 1.5px solid rgba(6,214,160,.3); border-radius: 12px; padding: 20px 24px; color: var(--teal); font-size: .95rem; text-align: center; }
-    .form-error { display: none; background: rgba(255,107,91,.1); border: 1.5px solid rgba(255,107,91,.3); border-radius: 12px; padding: 16px 20px; color: var(--coral); font-size: .88rem; text-align: center; margin-top: 8px; }
-    footer { background: #0f0f1f; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: rgba(255,255,255,.4); font-size: .82rem; }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--coral); }
-    .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(15,15,31,.92); align-items: center; justify-content: center; padding: 32px; }
-    .lightbox.open { display: flex; }
-    .lb-inner { background: #fff; border-radius: 24px; max-width: 700px; width: 100%; overflow: hidden; animation: lbIn .3s ease; }
-    @keyframes lbIn { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .lb-img { width: 100%; aspect-ratio: 4/3; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 6rem; overflow: hidden; }
-    .lb-img img { width: 100%; height: 100%; object-fit: cover; }
-    .lb-body { padding: 28px 32px; }
-    .lb-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 8px; }
-    .lb-meta { font-size: .88rem; color: #999; margin-bottom: 16px; }
-    .lb-desc { font-size: .95rem; color: #555; line-height: 1.7; margin-bottom: 24px; }
-    .lb-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .lb-price { font-size: 1.4rem; font-weight: 500; color: var(--coral); font-family: 'Playfair Display', serif; }
-    .lb-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.15); border: none; color: #fff; font-size: 1.4rem; cursor: none; display: flex; align-items: center; justify-content: center; transition: background .2s; }
-    .lb-close:hover { background: var(--coral); }
-    .loading-gallery { text-align: center; padding: 60px; color: #aaa; font-size: 1rem; }
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .hero { padding: 120px 24px 80px; }
-      section { padding: 80px 24px; }
-      #about { grid-template-columns: 1fr; gap: 40px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 24px; }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-sans);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--cream)}
+    ::-webkit-scrollbar-thumb{background:var(--blush-light);border-radius:2px}
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce{background:var(--dark);color:rgba(255,255,255,.85);text-align:center;padding:.55rem 1rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;font-weight:400}
+
+    /* ── NAV ── */
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(253,250,247,.96);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
     }
-    @media (max-width: 600px) {
-      nav ul { display: none; }
-      .gallery-grid { grid-template-columns: 1fr; }
+    .nav-inner{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      padding:.9rem 3rem;
+      max-width:1400px;margin:0 auto;
+    }
+    .nav-left,.nav-right{display:flex;gap:2rem;align-items:center}
+    .nav-right{justify-content:flex-end}
+    .nav-link{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:400;transition:color .2s}
+    .nav-link:hover{color:var(--blush)}
+    .nav-logo{
+      font-family:var(--font-serif);
+      font-size:1.6rem;font-weight:700;font-style:italic;
+      color:var(--blush);text-decoration:none;text-align:center;
+      letter-spacing:.02em;
+    }
+    .nav-icons{display:flex;gap:1.25rem;align-items:center}
+    .nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--muted);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:color .2s;font-family:var(--font-sans)}
+    .nav-icon-btn:hover{color:var(--blush)}
+
+    /* ── HERO ── */
+    .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .hero-img{position:absolute;inset:0;background:#E8D8C8}
+    .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(42,26,16,.08) 0%,rgba(42,26,16,.32) 100%)}
+    .hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:2rem;max-width:680px}
+    .hero-eyebrow{font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:1.25rem;font-weight:400}
+    .hero-h1{font-family:var(--font-serif);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;line-height:1.05;margin-bottom:1rem;color:#fff}
+    .hero-h1 em{font-style:italic;color:var(--blush-light)}
+    .hero-desc{font-size:.95rem;color:rgba(255,255,255,.8);font-weight:300;margin-bottom:2rem;line-height:1.75;max-width:420px;margin-left:auto;margin-right:auto}
+    .hero-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+    .btn-hero-p{background:#fff;color:var(--dark);font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;padding:.85rem 2.2rem;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:500;text-decoration:none;display:inline-block;transition:all .25s}
+    .btn-hero-p:hover{background:var(--blush);color:#fff}
+    .btn-hero-g{background:transparent;color:#fff;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;padding:.85rem 2.2rem;border:1px solid rgba(255,255,255,.6);cursor:pointer;font-family:var(--font-sans);font-weight:400;text-decoration:none;display:inline-block;transition:all .25s}
+    .btn-hero-g:hover{background:#fff;color:var(--dark)}
+
+    /* ── TICKER ── */
+    .ticker{background:var(--blush);padding:.6rem 0;overflow:hidden}
+    .ticker-track{display:flex;animation:tick 30s linear infinite;white-space:nowrap}
+    .tick-item{font-size:.65rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 2rem;font-weight:400;flex-shrink:0}
+    .tick-sep{opacity:.5}
+    @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── SECTION SHARED ── */
+    .sec-wrap{max-width:1400px;margin:0 auto;padding:5rem 3rem}
+    .sec-head{text-align:center;margin-bottom:3rem}
+    .sec-eyebrow{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:.75rem;display:block}
+    .sec-h2{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);color:var(--dark);font-weight:700;line-height:1.1;margin-bottom:.6rem}
+    .sec-h2 em{font-style:italic;color:var(--blush)}
+    .sec-sub{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.75;max-width:440px;margin:0 auto}
+
+    /* ── CATEGORY STRIP ── */
+    .cat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-bottom:2px}
+    .cat-card{position:relative;overflow:hidden;cursor:pointer;background:var(--cream)}
+    .cat-card:hover .cat-img{transform:scale(1.04)}
+    .cat-img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .5s;display:block;background:var(--blush-light)}
+    .cat-img-swatch{width:100%;aspect-ratio:3/2;transition:transform .5s}
+    .cat-card:hover .cat-img-swatch{transform:scale(1.04)}
+    .cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,16,.55) 0%,transparent 60%);display:flex;align-items:flex-end;padding:1.25rem}
+    .cat-label{color:#fff}
+    .cat-label-sub{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:.25rem;display:block;font-weight:300}
+    .cat-label-main{font-family:var(--font-serif);font-size:1.3rem;font-style:italic;font-weight:700}
+
+    /* ── GALLERY FILTERS ── */
+    .filter-row{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+    .filter-btn{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;padding:.45rem 1.25rem;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;font-family:var(--font-sans);font-weight:400;transition:all .2s;border-radius:0}
+    .filter-btn.active,.filter-btn:hover{background:var(--dark);border-color:var(--dark);color:#fff}
+
+    /* ── PRODUCT GRID ── */
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;background:var(--border)}
+    .p-card{background:var(--cream);cursor:pointer;position:relative;overflow:hidden;transition:box-shadow .3s}
+    .p-card:hover{box-shadow:0 8px 40px rgba(42,26,16,.12)}
+    .p-card:hover .p-img-inner{transform:scale(1.05)}
+    .p-card:hover .p-overlay{opacity:1}
+    .p-img-wrap{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--blush-pale)}
+    .p-img-inner{width:100%;height:100%;object-fit:cover;transition:transform .5s;display:block}
+    .p-img-swatch{width:100%;height:100%;transition:transform .5s}
+    .p-card:hover .p-img-swatch{transform:scale(1.05)}
+    .p-overlay{position:absolute;inset:0;background:rgba(42,26,16,.3);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;flex-direction:column}
+    .p-overlay-btn{background:#fff;color:var(--dark);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.7rem 1.6rem;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:500;transition:background .2s}
+    .p-overlay-btn:hover{background:var(--blush);color:#fff}
+    .p-overlay-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.7);color:#fff}
+    .p-overlay-btn.ghost:hover{background:#fff;color:var(--dark)}
+    .p-badge{position:absolute;top:.85rem;left:.85rem;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:.25rem .7rem;font-weight:500}
+    .badge-avail{background:var(--green);color:#fff}
+    .badge-sold{background:rgba(42,26,16,.6);color:rgba(255,255,255,.8)}
+    .badge-new{background:var(--blush);color:#fff}
+    .p-info{padding:1rem 1.1rem 1.25rem}
+    .p-title{font-family:var(--font-serif);font-size:1.05rem;color:var(--dark);margin-bottom:.2rem;font-weight:600;line-height:1.3}
+    .p-meta{font-size:.72rem;color:var(--muted);margin-bottom:.65rem;font-weight:300;letter-spacing:.3px}
+    .p-footer{display:flex;align-items:center;justify-content:space-between}
+    .p-price{font-family:var(--font-serif);font-size:1.2rem;color:var(--blush);font-weight:700}
+    .p-status{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:.25rem .7rem;font-weight:500}
+    .s-avail{background:var(--green-light);color:var(--green)}
+    .s-sold{background:var(--blush-pale);color:var(--muted)}
+
+    /* ── FEATURED BANNER ── */
+    .featured-banner{display:grid;grid-template-columns:1fr 1fr;background:var(--dark)}
+    .feat-img{position:relative;min-height:500px;overflow:hidden}
+    .feat-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .feat-img-swatch{width:100%;height:100%;min-height:500px}
+    .feat-img-overlay{position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,rgba(42,26,16,.3) 100%)}
+    .feat-tag-card{position:absolute;bottom:2rem;left:2rem;background:rgba(253,250,247,.95);padding:1rem 1.4rem;backdrop-filter:blur(8px)}
+    .feat-tag-label{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+    .feat-tag-price{font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:var(--blush);line-height:1}
+    .feat-tag-note{font-size:.68rem;color:var(--muted);margin-top:.25rem}
+    .feat-content{padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+    .feat-eyebrow{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blush-light);margin-bottom:1rem}
+    .feat-h2{font-family:var(--font-serif);font-size:clamp(2rem,3.5vw,3rem);color:#fff;font-weight:700;line-height:1.1;margin-bottom:1rem}
+    .feat-h2 em{font-style:italic;color:var(--blush-light)}
+    .feat-desc{font-size:.9rem;color:rgba(255,255,255,.6);font-weight:300;line-height:1.85;margin-bottom:1.75rem}
+    .feat-specs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:2rem}
+    .feat-spec label{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-bottom:.2rem}
+    .feat-spec span{font-size:.85rem;color:rgba(255,255,255,.8)}
+    .btn-feat{display:inline-block;background:var(--blush);color:#fff;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;padding:.9rem 2rem;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:500;text-decoration:none;transition:background .2s}
+    .btn-feat:hover{background:var(--blush-light);color:var(--dark)}
+
+    /* ── ABOUT ── */
+    .about-section{display:grid;grid-template-columns:1fr 1fr;background:var(--blush-pale)}
+    .about-img-col{position:relative;min-height:560px;overflow:hidden}
+    .about-img-col img{width:100%;height:100%;object-fit:cover;display:block}
+    .about-img-swatch{width:100%;height:100%;min-height:560px;background:linear-gradient(160deg,#E8C8A0,#C09060,#A07848)}
+    .about-content{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+    .about-eyebrow{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--blush);margin-bottom:.75rem;display:block}
+    .about-h2{font-family:var(--font-serif);font-size:clamp(1.8rem,3vw,2.8rem);color:var(--dark);font-weight:700;line-height:1.1;margin-bottom:1.25rem}
+    .about-h2 em{font-style:italic;color:var(--blush)}
+    .about-p{font-size:.9rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;font-weight:300}
+    .about-sig{font-family:var(--font-serif);font-size:1.6rem;font-style:italic;color:var(--blush);margin:1.25rem 0 1.75rem}
+    .about-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+    .chip{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.3rem .85rem;background:#fff}
+    .btn-about{display:inline-block;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);border-bottom:1.5px solid var(--blush);padding-bottom:.2rem;text-decoration:none;transition:color .2s}
+    .btn-about:hover{color:var(--blush)}
+    .about-stats{display:flex;gap:2.5rem;margin-top:2rem;padding-top:1.75rem;border-top:1px solid var(--border)}
+    .stat-num{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;color:var(--blush);line-height:1}
+    .stat-label{font-size:.68rem;color:var(--muted);letter-spacing:.5px;margin-top:.2rem}
+
+    /* ── PROCESS STRIP ── */
+    .process-strip{background:var(--dark);padding:4rem 3rem;text-align:center}
+    .process-strip .sec-eyebrow{color:rgba(255,255,255,.4)}
+    .process-strip .sec-h2{color:#fff;margin-bottom:.75rem}
+    .process-strip .sec-h2 em{color:var(--blush-light)}
+    .process-strip .sec-sub{color:rgba(255,255,255,.5);margin-bottom:2.5rem}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:900px;margin:0 auto;background:rgba(255,255,255,.08)}
+    .process-card{background:rgba(255,255,255,.04);padding:2rem 1.5rem;text-align:center}
+    .process-num{font-family:var(--font-serif);font-size:2.5rem;color:var(--blush);font-weight:700;line-height:1;margin-bottom:.75rem}
+    .process-title{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:.5rem}
+    .process-desc{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300}
+
+    /* ── CONTACT ── */
+    #contact{background:var(--warm-white)}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+    .contact-left .sec-h2{text-align:left;margin-bottom:1rem}
+    .contact-left p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.75rem;font-weight:300}
+    .contact-details{display:flex;flex-direction:column;gap:1.1rem}
+    .c-detail{display:flex;gap:1rem;align-items:flex-start}
+    .c-detail-icon{width:36px;height:36px;background:var(--blush-pale);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+    .c-detail-text label{display:block;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--blush);margin-bottom:.2rem}
+    .c-detail-text span{font-size:.85rem;color:var(--muted)}
+    .contact-form{display:flex;flex-direction:column;gap:.75rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    .form-group{display:flex;flex-direction:column;gap:.4rem}
+    .form-label{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500}
+    .form-field{background:var(--cream);border:1px solid var(--border);color:var(--text);padding:.8rem 1rem;font-family:var(--font-sans);font-size:.88rem;outline:none;transition:border-color .2s;border-radius:0;width:100%}
+    .form-field:focus{border-color:var(--blush)}
+    .form-field::placeholder{color:#C8B8A8}
+    textarea.form-field{height:130px;resize:vertical}
+    select.form-field{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A8A7A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+    .btn-submit{background:var(--dark);color:#fff;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;padding:.95rem 2.5rem;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:500;transition:background .2s;align-self:flex-start;margin-top:.25rem}
+    .btn-submit:hover{background:var(--blush)}
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed}
+    .form-success{display:none;background:var(--green-light);border:1px solid rgba(74,140,92,.25);padding:1.25rem 1.5rem;font-size:.88rem;color:var(--green);text-align:center;margin-top:.5rem}
+
+    /* ── LIGHTBOX ── */
+    .lb-bg{display:none;position:fixed;inset:0;z-index:200;background:rgba(42,26,16,.88);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:2rem}
+    .lb-bg.open{display:flex}
+    .lb-box{background:var(--cream);max-width:780px;width:100%;overflow:hidden;animation:lbIn .3s ease}
+    @keyframes lbIn{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+    .lb-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.75rem;border-bottom:1px solid var(--border)}
+    .lb-head-title{font-family:var(--font-serif);font-size:1.2rem;color:var(--dark);font-weight:600}
+    .lb-close{background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--muted);line-height:1;transition:color .2s}
+    .lb-close:hover{color:var(--blush)}
+    .lb-body{display:grid;grid-template-columns:1fr 1fr}
+    .lb-img{aspect-ratio:4/4;overflow:hidden;background:var(--blush-pale)}
+    .lb-img img,.lb-img .lb-swatch{width:100%;height:100%;object-fit:cover;display:block}
+    .lb-info{padding:2rem}
+    .lb-price{font-family:var(--font-serif);font-size:2rem;color:var(--blush);font-weight:700;margin-bottom:.75rem}
+    .lb-spec{font-size:.75rem;color:var(--muted);margin-bottom:.3rem}
+    .lb-spec strong{color:var(--text)}
+    .lb-desc{font-size:.85rem;color:var(--muted);line-height:1.75;margin:1rem 0 1.5rem;font-style:italic;border-left:2px solid var(--blush-light);padding-left:.85rem}
+    .lb-btns{display:flex;gap:.5rem;flex-wrap:wrap}
+    .btn-lb-buy{background:var(--blush);color:#fff;padding:.75rem 1.5rem;border:none;cursor:pointer;font-family:var(--font-sans);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
+    .btn-lb-buy:hover{background:var(--dark)}
+    .btn-lb-close{background:transparent;color:var(--text);padding:.75rem 1.5rem;border:1px solid var(--border);cursor:pointer;font-family:var(--font-sans);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;transition:border-color .2s}
+    .btn-lb-close:hover{border-color:var(--dark)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark)}
+    .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:3.5rem 3rem 2.5rem;max-width:1400px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.08)}
+    .foot-brand .foot-logo{font-family:var(--font-serif);font-size:1.5rem;font-style:italic;color:var(--blush);font-weight:700;margin-bottom:.75rem;display:block}
+    .foot-brand p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.75;font-weight:300;max-width:240px}
+    .foot-col h4{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .foot-col ul a{font-size:.8rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+    .foot-col ul a:hover{color:var(--blush)}
+    .foot-bottom{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;max-width:1400px;margin:0 auto}
+    .foot-copy{font-size:.7rem;color:rgba(255,255,255,.25);letter-spacing:.5px}
+    .foot-social{display:flex;gap:1.25rem}
+    .foot-social a{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+    .foot-social a:hover{color:var(--blush)}
+
+    /* SWATCH COLOURS */
+    .sw1{background:linear-gradient(170deg,#87CEEB 0%,#FFD580 40%,#FF7A50 60%,#4A8C5C 85%)}
+    .sw2{background:radial-gradient(ellipse 70% 60% at 30% 80%,#E8362A 0%,transparent 40%),radial-gradient(ellipse 50% 50% at 70% 90%,#FFE566 0%,transparent 40%),linear-gradient(180deg,#B0E0FF 0%,#4A8C5C 100%)}
+    .sw3{background:radial-gradient(ellipse 60% 70% at 50% 80%,#E8362A 0%,transparent 50%),linear-gradient(180deg,#C9D8E8 0%,#228B22 80%)}
+    .sw4{background:radial-gradient(ellipse 50% 60% at 20% 90%,#C9A8E0 0%,transparent 40%),radial-gradient(ellipse 40% 50% at 70% 70%,#4A7FD4 0%,transparent 40%),linear-gradient(180deg,#FFB5C8 0%,#B0E8C0 100%)}
+    .sw5{background:radial-gradient(ellipse 80% 50% at 50% 70%,#FF8C00 0%,transparent 50%),linear-gradient(180deg,#87CEEB 0%,#FFD580 45%,#2D5A2D 100%)}
+    .sw6{background:radial-gradient(ellipse 80% 60% at 60% 60%,#FF8C00 0%,transparent 55%),linear-gradient(140deg,#1a0800,#E8B870)}
+    .sw-about{background:linear-gradient(160deg,#E8D8C0 0%,#D4B090 40%,#C09060 70%,#A87848 100%)}
+
+    /* LOADING */
+    .loading{text-align:center;padding:4rem;color:var(--muted);font-size:.85rem;letter-spacing:1px;grid-column:1/-1}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .nav-inner{padding:.9rem 1.5rem}
+      .sec-wrap{padding:4rem 1.5rem}
+      .feat-content{padding:3rem 2rem}
+      .about-content{padding:3rem 2rem}
+      .foot-top{grid-template-columns:1fr 1fr;gap:2rem}
+    }
+    @media(max-width:768px){
+      .nav-left,.nav-right{display:none}
+      .nav-inner{grid-template-columns:1fr}
+      .nav-logo{font-size:1.4rem}
+      .hero{height:75vh}
+      .cat-strip{grid-template-columns:1fr}
+      .featured-banner{grid-template-columns:1fr}
+      .feat-img-swatch{min-height:280px}
+      .about-section{grid-template-columns:1fr}
+      .about-img-swatch{min-height:320px}
+      .contact-wrap{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .lb-body{grid-template-columns:1fr}
+      .lb-img{aspect-ratio:4/3}
+      .process-grid{grid-template-columns:1fr}
+      .foot-top{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem}
+      .foot-bottom{flex-direction:column;gap:.75rem;padding:1.25rem 1.5rem;text-align:center}
     }
   </style>
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<!-- ANNOUNCEMENT -->
+<div class="announce">Free shipping on orders over $500 · Commissions open · Ships worldwide</div>
 
-  <nav>
-    <div class="nav-logo">art<span>by</span>shri</div>
-    <ul>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="btn btn-primary" style="padding:10px 24px;font-size:.85rem;">Enquire to Buy</a>
-  </nav>
-
-  <section class="hero" id="home">
-    <div class="hero-bg-shapes">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Commission</a>
     </div>
-    <div class="hero-content">
-      <span class="hero-tag">✦ Original Fine Art Paintings</span>
-      <h1>Where colour<br><em>tells stories</em></h1>
-      <p class="hero-sub">Each painting is a one-of-a-kind original — vibrant, expressive, and made with love. Available for purchase and shipped worldwide.</p>
-      <div class="hero-cta">
-        <a href="#gallery" class="btn btn-primary">View Gallery</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    <a href="#" class="nav-logo">Art by Shri</a>
+    <div class="nav-right">
+      <div class="nav-icons">
+        <a href="https://www.instagram.com/shrideviart?igsh=MTQ3cGVxOGZ2ZmtiNw==" target="_blank" class="nav-link">Instagram</a>
+        <a href="#contact" class="nav-icon-btn">Enquire</a>
       </div>
     </div>
-  </section>
+  </div>
+</nav>
 
-  <section id="gallery">
-    <div class="gallery-header">
-      <div>
-        <div class="section-label">✦ Portfolio</div>
-        <h2 class="section-title">Original Paintings</h2>
-        <p class="section-sub">Each piece is a unique original. Click any painting to learn more or enquire about purchasing.</p>
-      </div>
-      <div class="gallery-filter">
-        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
-        <button class="filter-btn" onclick="filterGallery('abstract', this)">Abstract</button>
-        <button class="filter-btn" onclick="filterGallery('landscape', this)">Landscape</button>
-        <button class="filter-btn" onclick="filterGallery('floral', this)">Floral</button>
-        <button class="filter-btn" onclick="filterGallery('portrait', this)">Portrait</button>
-      </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="images/meadow-sunset.jpg" alt="Wildflower Meadow at Sunset — original acrylic painting by Shri" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Original Acrylic Paintings · Sydney, Australia</div>
+    <h1 class="hero-h1">Where wildflowers<br>meet the <em>canvas</em></h1>
+    <p class="hero-desc">Hand-textured originals painted with palette knife and gel medium. Each petal raised from the surface — no prints, no reproductions.</p>
+    <div class="hero-btns">
+      <a href="#gallery" class="btn-hero-p">View Gallery</a>
+      <a href="#contact" class="btn-hero-g">Commission a Piece</a>
     </div>
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="loading-gallery">Loading paintings…</div>
-    </div>
-  </section>
+  </div>
+</div>
 
-  <section id="about">
-    <div class="about-visual">
-      <div class="about-img-wrap">
-        <img src="images/shri.jpg" alt="Shri - Artist">
-      </div>
-      <div class="about-accent"></div>
-      <div class="about-accent2"></div>
-    </div>
-    <div class="about-text">
-      <div class="section-label">✦ The Artist</div>
-      <h2 class="section-title">Hello, I'm Shri</h2>
-      <p class="section-sub">Painter, colourist, and lover of all things vibrant.</p>
-      <p>I create original paintings that celebrate joy, colour, and the beauty of everyday moments. Each piece is hand-painted with love and intention — no prints, no reproductions, just one-of-a-kind originals.</p>
-      <p>My work spans abstract expressionism, florals, and landscapes — always bold, always full of life. I ship worldwide and welcome commissions.</p>
-      <div class="about-stats">
-        <div><div class="stat-num">50+</div><div class="stat-label">Originals Sold</div></div>
-        <div><div class="stat-num">12</div><div class="stat-label">Countries Shipped</div></div>
-        <div><div class="stat-num">5★</div><div class="stat-label">Happy Collectors</div></div>
-      </div>
-    </div>
-  </section>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker"></div>
+</div>
 
-  <section id="contact">
-    <div class="section-label">✦ Get in Touch</div>
-    <h2 class="section-title">Love a piece?<br>Let's make it yours.</h2>
-    <p class="section-sub">Fill in the form and I'll get back to you within 24 hours with availability, shipping details, and payment options.</p>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3>Commission &amp; Purchase Enquiries</h3>
-        <p>Whether you're interested in an existing piece, want a custom commission, or just want to say hello — I'd love to hear from you.</p>
-        <div class="contact-detail"><div class="contact-detail-icon ci-yellow">📧</div><span>hello@artbyshri.com</span></div>
-        <div class="contact-detail"><div class="contact-detail-icon ci-coral">🌏</div><span>Ships worldwide from Australia</span></div>
-        <div class="contact-detail"><div class="contact-detail-icon ci-teal">📦</div><span>Professionally packed &amp; insured</span></div>
+<!-- CATEGORY STRIP -->
+<div class="cat-strip">
+  <div class="cat-card" onclick="filterGallery('floral', null)">
+    <div class="cat-img-swatch sw2" style="aspect-ratio:3/2"></div>
+    <div class="cat-overlay">
+      <div class="cat-label">
+        <span class="cat-label-sub">Browse</span>
+        <span class="cat-label-main">Floral</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-card" onclick="filterGallery('landscape', null)">
+    <div class="cat-img-swatch sw5" style="aspect-ratio:3/2"></div>
+    <div class="cat-overlay">
+      <div class="cat-label">
+        <span class="cat-label-sub">Browse</span>
+        <span class="cat-label-main">Landscape</span>
+      </div>
+    </div>
+  </div>
+  <div class="cat-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    <div class="cat-img-swatch sw6" style="aspect-ratio:3/2"></div>
+    <div class="cat-overlay">
+      <div class="cat-label">
+        <span class="cat-label-sub">Custom</span>
+        <span class="cat-label-main">Commission</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-wrap">
+    <div class="sec-head">
+      <span class="sec-eyebrow">Portfolio</span>
+      <h2 class="sec-h2">Original <em>Paintings</em></h2>
+      <p class="sec-sub">Every piece is a one-of-a-kind original, signed and documented with certificate of authenticity.</p>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">All Works</button>
+      <button class="filter-btn" onclick="filterGallery('floral',this)">Floral</button>
+      <button class="filter-btn" onclick="filterGallery('landscape',this)">Landscape</button>
+      <button class="filter-btn" onclick="filterGallery('abstract',this)">Abstract</button>
+      <button class="filter-btn" onclick="filterGallery('available',this)">Available</button>
+    </div>
+    <div class="product-grid" id="galleryGrid">
+      <div class="loading">Loading paintings…</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<div class="featured-banner" id="featured">
+  <div class="feat-img">
+    <img src="images/meadow-sunset.jpg" alt="Wildflower Meadow at Sunset — featured painting" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="feat-img-swatch sw1" style="display:none"></div>
+    <div class="feat-img-overlay"></div>
+    <div class="feat-tag-card">
+      <div class="feat-tag-label">Asking Price</div>
+      <div class="feat-tag-price">$2,800</div>
+      <div class="feat-tag-note">AUD · Includes framing</div>
+    </div>
+  </div>
+  <div class="feat-content">
+    <div class="feat-eyebrow">★ Featured Piece</div>
+    <h2 class="feat-h2">Wildflower <em>Meadow</em><br>at Sunset</h2>
+    <p class="feat-desc">The largest work in the current collection. A sweeping field of hand-textured wildflowers beneath a luminous swirling sky — poppies, daisies, cosmos, and bees painted with palette knife and fingertip. Every petal stands proud from the canvas surface.</p>
+    <div class="feat-specs">
+      <div class="feat-spec"><label>Medium</label><span>Heavy Body Acrylic + Gel Medium</span></div>
+      <div class="feat-spec"><label>Dimensions</label><span>~120 × 90 cm</span></div>
+      <div class="feat-spec"><label>Finish</label><span>Raised Texture · Gloss Varnish</span></div>
+      <div class="feat-spec"><label>Status</label><span style="color:#4A8C5C">● Available</span></div>
+    </div>
+    <a href="#contact" class="btn-feat">Enquire About This Piece</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-img-col">
+    <img src="images/meadow-sunset.jpg" alt="Shri — the artist" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="about-img-swatch sw-about" style="display:none"></div>
+  </div>
+  <div class="about-content">
+    <span class="about-eyebrow">The Artist</span>
+    <h2 class="about-h2">Hello, I'm <em>Shri</em></h2>
+    <p class="about-p">I've always been drawn to the energy of wildflowers — the way they grow without permission, in every colour at once. My acrylic paintings try to capture that feeling: abundant, unapologetic, alive.</p>
+    <p class="about-p">I work with heavy body acrylics and professional gel medium to build up thick, raised textures. Every petal is applied with a palette knife or my fingertips — you can feel the brushwork when you run your hand across the surface.</p>
+    <p class="about-p">Based in Sydney, I paint in my home studio and ship worldwide. Commissions are very welcome — tell me your colours and your space, and I'll bring it to life.</p>
+    <div class="about-sig">— With love & colour</div>
+    <div class="about-chips">
+      <span class="chip">Sydney, Australia</span>
+      <span class="chip">Heavy Body Acrylic</span>
+      <span class="chip">Gel Medium Texture</span>
+      <span class="chip">Commissions Open</span>
+      <span class="chip">Ships Worldwide</span>
+    </div>
+    <a href="#contact" class="btn-about">Commission a painting →</a>
+    <div class="about-stats">
+      <div><div class="stat-num">50+</div><div class="stat-label">Originals Created</div></div>
+      <div><div class="stat-num">12</div><div class="stat-label">Countries Shipped</div></div>
+      <div><div class="stat-num">5★</div><div class="stat-label">Happy Collectors</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS STRIP -->
+<div class="process-strip">
+  <span class="sec-eyebrow">How it works</span>
+  <h2 class="sec-h2" style="color:#fff;margin-bottom:.75rem">From studio to <em>your wall</em></h2>
+  <p class="sec-sub" style="color:rgba(255,255,255,.5);margin:0 auto 2.5rem">Every painting is carefully packed and shipped with full insurance and a certificate of authenticity.</p>
+  <div class="process-grid">
+    <div class="process-card">
+      <div class="process-num">01</div>
+      <div class="process-title">Choose a Painting</div>
+      <div class="process-desc">Browse the gallery and find a piece that speaks to you — or commission something unique.</div>
+    </div>
+    <div class="process-card">
+      <div class="process-num">02</div>
+      <div class="process-title">Send an Enquiry</div>
+      <div class="process-desc">Fill in the contact form and I'll confirm availability, answer questions, and arrange payment.</div>
+    </div>
+    <div class="process-card">
+      <div class="process-num">03</div>
+      <div class="process-title">Delivered to Your Door</div>
+      <div class="process-desc">Professionally packed, fully insured, with a certificate of authenticity. Shipped worldwide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-wrap">
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <span class="sec-eyebrow">Get In Touch</span>
+        <h2 class="sec-h2">Love a piece?<br>Let's make it <em>yours</em></h2>
+        <p>Tell me the colours you love, the wall it's going on, the feeling you want to walk into every day. I'll get back to you within 24 hours.</p>
+        <div class="contact-details">
+          <div class="c-detail">
+            <div class="c-detail-icon">📧</div>
+            <div class="c-detail-text"><label>Email</label><span>hello@artbyshri.com</span></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-detail-icon">🌏</div>
+            <div class="c-detail-text"><label>Location</label><span>Sydney, NSW, Australia</span></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-detail-icon">📦</div>
+            <div class="c-detail-text"><label>Shipping</label><span>Worldwide · Fully insured</span></div>
+          </div>
+          <div class="c-detail">
+            <div class="c-detail-icon">⏱</div>
+            <div class="c-detail-text"><label>Response Time</label><span>Within 24 hours</span></div>
+          </div>
+        </div>
       </div>
       <div>
         <form id="contactForm" onsubmit="submitForm(event)">
           <div class="form-row">
-            <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Jane Smith" required /></div>
-            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="jane@email.com" required /></div>
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input class="form-field" type="text" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input class="form-field" type="email" name="email" placeholder="jane@email.com" required>
+            </div>
           </div>
           <div class="form-group">
-            <label>Which painting interests you?</label>
-            <select id="paintingSelect" name="painting">
+            <label class="form-label">Painting of Interest</label>
+            <select class="form-field" id="paintingSelect" name="painting">
               <option value="">— Select a painting —</option>
             </select>
           </div>
-          <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about yourself, where the painting will live, or what you have in mind for a commission…"></textarea></div>
-          <button type="submit" class="submit-btn" id="submitBtn">Send Enquiry ✦</button>
+          <div class="form-group">
+            <label class="form-label">Budget Range</label>
+            <input class="form-field" type="text" name="budget" placeholder="e.g. $500 – $2,000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-field" name="message" placeholder="Tell me about the space it'll live in, colours you love, or what you have in mind for a commission…"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry</button>
+          <div class="form-success" id="formSuccess">🌸 Thank you! I've received your message and will be in touch within 24 hours.</div>
         </form>
-        <div class="form-success" id="formSuccess">🎉 Thank you! I've received your message and will be in touch within 24 hours.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <div class="footer-logo">artbyshri</div>
-    <span>© 2025 Art by Shri. All rights reserved. Original paintings only.</span>
-    <a href="https://www.instagram.com/shrideviart?igsh=MTQ3cGVxOGZ2ZmtiNw==" target="_blank" style="color:rgba(255,255,255,.4);text-decoration:none;">Instagram</a>
-    <a href="https://www.facebook.com/shrideviart" target="_blank" style="color:rgba(255,255,255,.4);text-decoration:none;">Facebook</a>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <span class="foot-logo">Art by Shri</span>
+      <p>Original hand-textured acrylic paintings. Made with love in Sydney, Australia. Shipped worldwide.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#gallery">All Paintings</a></li>
+        <li><a href="#gallery" onclick="filterGallery('floral',null)">Floral</a></li>
+        <li><a href="#gallery" onclick="filterGallery('landscape',null)">Landscape</a></li>
+        <li><a href="#contact">Commission</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#about">About Shri</a></li>
+        <li><a href="#contact">Shipping & Returns</a></li>
+        <li><a href="#contact">Care Instructions</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/shrideviart?igsh=MTQ3cGVxOGZ2ZmtiNw==" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/shrideviart" target="_blank">Facebook</a></li>
+        <li><a href="mailto:hello@artbyshri.com">hello@artbyshri.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-copy">© 2026 Art by Shri · Original paintings · All rights reserved</span>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/shrideviart?igsh=MTQ3cGVxOGZ2ZmtiNw==" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/shrideviart" target="_blank">Facebook</a>
+    </div>
+  </div>
+</footer>
 
-  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-    <button class="lb-close" onclick="closeLightbox()">✕</button>
-    <div class="lb-inner">
+<!-- LIGHTBOX -->
+<div class="lb-bg" id="lightbox" onclick="lbOverlay(event)">
+  <div class="lb-box">
+    <div class="lb-head">
+      <div class="lb-head-title" id="lbTitle">—</div>
+      <button class="lb-close" onclick="closeLb()">×</button>
+    </div>
+    <div class="lb-body">
       <div class="lb-img" id="lbImg"></div>
-      <div class="lb-body">
-        <div class="lb-title" id="lbTitle"></div>
-        <div class="lb-meta" id="lbMeta"></div>
-        <div class="lb-desc" id="lbDesc"></div>
-        <div class="lb-footer">
-          <span class="lb-price" id="lbPrice"></span>
-          <a href="#contact" class="btn btn-primary" onclick="closeLightbox()">Enquire to Buy</a>
+      <div class="lb-info">
+        <div class="lb-price" id="lbPrice">—</div>
+        <div id="lbSpecs"></div>
+        <p class="lb-desc" id="lbDesc">—</p>
+        <div class="lb-btns">
+          <button class="btn-lb-buy" onclick="goEnquire()">Enquire to Buy</button>
+          <button class="btn-lb-close" onclick="closeLb()">Close</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    // ── Cursor ──
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';
-      ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+<script>
+  /* ── WEB3FORMS ── */
+  const WEB3FORMS_KEY = '7b5f367d-0fd0-4553-bf87-c08891ddebc5';
+
+  /* ── DATA ── */
+  let allPaintings = [];
+  const fallbackColors = ['sw1','sw2','sw3','sw4','sw5','sw6'];
+  const fallbackEmoji  = ['🎨','🌸','🌅','🌊','🎭','🌺'];
+
+  /* ── TICKER ── */
+  const tickItems = ['✦ Original Acrylic Paintings','✦ Heavy Texture & Gel Medium','✦ Sydney, Australia','✦ Ships Worldwide','✦ Commissions Welcome','✦ Certificate of Authenticity'];
+  const tk = document.getElementById('ticker');
+  const th = tickItems.map(i=>`<span class="tick-item">${i}</span>`).join('');
+  tk.innerHTML = th + th;
+
+  /* ── LOAD PAINTINGS ── */
+  fetch('paintings.json')
+    .then(r => r.json())
+    .then(data => { allPaintings = data; renderGallery(data); populateSelect(data); })
+    .catch(() => {
+      document.getElementById('galleryGrid').innerHTML =
+        '<div class="loading">Could not load paintings — make sure paintings.json is in the repo.</div>';
     });
 
-    // ── Fallback colours when no image provided ──
-    const fallbackColors = [
-      'linear-gradient(135deg,#FF6B5B,#FFD166)',
-      'linear-gradient(135deg,#06D6A0,#118AB2)',
-      'linear-gradient(135deg,#EF476F,#FFD166)',
-      'linear-gradient(135deg,#073B4C,#06D6A0)',
-      'linear-gradient(135deg,#FF6B5B,#EF476F)',
-      'linear-gradient(135deg,#FFD166,#06D6A0)'
-    ];
-    const fallbackEmoji = ['🎨','🌸','🌅','🌊','🎭','🌺'];
-
-    // ── Load paintings from paintings.json ──
-    let allPaintings = [];
-
-    fetch('paintings.json')
-      .then(r => r.json())
-      .then(data => {
-        allPaintings = data;
-        renderGallery(data);
-        populateSelect(data);
-      })
-      .catch(() => {
-        document.getElementById('galleryGrid').innerHTML =
-          '<p style="color:#aaa;padding:40px;text-align:center;">Could not load paintings. Make sure paintings.json is in the repo.</p>';
-      });
-
-    function renderGallery(paintings) {
-      const grid = document.getElementById('galleryGrid');
-      if (!paintings.length) {
-        grid.innerHTML = '<p style="color:#aaa;padding:40px;text-align:center;">No paintings found.</p>';
-        return;
-      }
-      grid.innerHTML = paintings.map((p, i) => {
-        const imgHtml = p.image
-          ? `<img src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-          : '';
-        const fallback = `<div class="art-placeholder" style="background:${fallbackColors[i % fallbackColors.length]};display:${p.image ? 'none' : 'flex'}">${fallbackEmoji[i % fallbackEmoji.length]}</div>`;
-        const enquireBtn = p.available
-          ? `<a href="#contact" class="overlay-btn ghost" onclick="preselectPainting('${p.title}')">Enquire to Buy</a>`
-          : '';
-        return `
-          <div class="art-card" data-category="${p.category}" data-index="${i}">
-            <div class="art-card-img">
-              ${imgHtml}${fallback}
-              <div class="art-card-overlay">
-                <button class="overlay-btn" onclick="openLightbox(${i})">View Details</button>
-                ${enquireBtn}
-              </div>
+  /* ── RENDER GALLERY ── */
+  function renderGallery(list) {
+    const grid = document.getElementById('galleryGrid');
+    if (!list.length) { grid.innerHTML = '<div class="loading">No paintings found.</div>'; return; }
+    grid.innerHTML = list.map((p, i) => {
+      const swClass = fallbackColors[i % fallbackColors.length];
+      const imgEl = p.image
+        ? `<img class="p-img-inner" src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="p-img-swatch ${swClass}" style="display:none"></div>`
+        : `<div class="p-img-swatch ${swClass}"></div>`;
+      const enquireBtn = p.available
+        ? `<button class="p-overlay-btn ghost" onclick="event.stopPropagation();preselectPainting('${p.title}');document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>`
+        : '';
+      return `
+        <div class="p-card" data-category="${p.category}" onclick="openLb(${i})">
+          <div class="p-img-wrap">
+            ${imgEl}
+            <span class="p-badge ${p.available ? 'badge-avail' : 'badge-sold'}">${p.available ? 'Available' : 'Sold'}</span>
+            <div class="p-overlay">
+              <button class="p-overlay-btn" onclick="event.stopPropagation();openLb(${i})">View Details</button>
+              ${enquireBtn}
             </div>
-            <div class="art-card-body">
-              <div class="art-card-title">${p.title}</div>
-              <div class="art-card-meta">${p.medium} · ${p.size}</div>
-              <div class="art-card-footer">
-                <span class="art-price">${p.price}</span>
-                <span class="art-status ${p.available ? 'status-available' : 'status-sold'}">${p.available ? 'Available' : 'Sold'}</span>
-              </div>
+          </div>
+          <div class="p-info">
+            <div class="p-title">${p.title}</div>
+            <div class="p-meta">${p.medium} · ${p.size}</div>
+            <div class="p-footer">
+              <div class="p-price">${p.price}</div>
+              <span class="p-status ${p.available ? 's-avail' : 's-sold'}">${p.available ? 'Available' : 'Sold'}</span>
             </div>
-          </div>`;
-      }).join('');
+          </div>
+        </div>`;
+    }).join('');
 
-      setTimeout(() => {
-        document.querySelectorAll('.art-card').forEach((card, i) => {
-          setTimeout(() => card.classList.add('visible'), i * 80);
-        });
-        document.querySelectorAll('.art-card,a,button').forEach(el => {
-          el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1.8)'; ring.style.transform = 'translate(-50%,-50%) scale(1.4)'; });
-          el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.transform = 'translate(-50%,-50%) scale(1)'; });
-        });
-      }, 50);
-    }
-
-    function populateSelect(paintings) {
-      const sel = document.getElementById('paintingSelect');
-      paintings.filter(p => p.available).forEach(p => {
-        const opt = document.createElement('option');
-        opt.value = p.title; opt.textContent = p.title;
-        sel.appendChild(opt);
+    // Stagger animate in
+    setTimeout(() => {
+      document.querySelectorAll('.p-card').forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(20px)';
+        c.style.transition = 'opacity .5s ease, transform .5s ease';
+        setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 60);
       });
-      const other = document.createElement('option');
-      other.value = 'Custom Commission'; other.textContent = 'Custom Commission';
-      sel.appendChild(other);
-    }
+    }, 50);
+  }
 
-    function preselectPainting(title) {
-      document.getElementById('paintingSelect').value = title;
-    }
-
-    function filterGallery(cat, btn) {
+  /* ── FILTER ── */
+  function filterGallery(cat, btn) {
+    if (btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filtered = cat === 'all' ? allPaintings : allPaintings.filter(p => p.category === cat);
-      renderGallery(filtered);
     }
+    const filtered = cat === 'all' ? allPaintings :
+      cat === 'available' ? allPaintings.filter(p => p.available) :
+      allPaintings.filter(p => p.category === cat);
+    renderGallery(filtered);
+    document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+  }
 
-    function openLightbox(index) {
-      const p = allPaintings[index];
-      const lbImg = document.getElementById('lbImg');
-      if (p.image) {
-        lbImg.innerHTML = `<img src="${p.image}" alt="${p.title}" onerror="this.parentElement.innerHTML='<div style=\\'font-size:5rem;width:100%;height:100%;display:flex;align-items:center;justify-content:center;\\'>${fallbackEmoji[index % fallbackEmoji.length]}</div>'">`;
-      } else {
-        lbImg.innerHTML = `<div style="font-size:5rem;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${fallbackColors[index % fallbackColors.length]}">${fallbackEmoji[index % fallbackEmoji.length]}</div>`;
-      }
-      document.getElementById('lbTitle').textContent = p.title;
-      document.getElementById('lbMeta').textContent = p.medium + ' · ' + p.size;
-      document.getElementById('lbDesc').textContent = p.description;
-      document.getElementById('lbPrice').textContent = p.price + (p.available ? '' : ' · Sold');
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
+  /* ── SELECT ── */
+  function populateSelect(paintings) {
+    const sel = document.getElementById('paintingSelect');
+    paintings.filter(p => p.available).forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.title; opt.textContent = `${p.title} — ${p.price}`;
+      sel.appendChild(opt);
+    });
+    const other = document.createElement('option');
+    other.value = 'Custom Commission'; other.textContent = 'Custom Commission';
+    sel.appendChild(other);
+  }
+
+  function preselectPainting(title) {
+    document.getElementById('paintingSelect').value = title;
+  }
+
+  /* ── LIGHTBOX ── */
+  function openLb(i) {
+    const p = allPaintings[i];
+    const swClass = fallbackColors[i % fallbackColors.length];
+    const lbImg = document.getElementById('lbImg');
+    lbImg.innerHTML = p.image
+      ? `<img src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="lb-swatch ${swClass}" style="display:none;width:100%;height:100%"></div>`
+      : `<div class="lb-swatch ${swClass}" style="width:100%;height:100%"></div>`;
+    document.getElementById('lbTitle').textContent = p.title;
+    document.getElementById('lbPrice').textContent = p.available ? p.price + ' AUD' : 'Sold';
+    document.getElementById('lbSpecs').innerHTML = [
+      ['Medium', p.medium], ['Size', p.size], ['Category', p.category],
+      ['Status', p.available ? '● Available' : 'Sold']
+    ].map(([k,v]) => `<div class="lb-spec"><strong>${k}:</strong> ${v}</div>`).join('');
+    document.getElementById('lbDesc').textContent = p.description || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+  function lbOverlay(e) { if (e.target.id === 'lightbox') closeLb(); }
+  function goEnquire() { closeLb(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }
+
+  /* ── CONTACT FORM ── */
+  async function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const btn  = document.getElementById('submitBtn');
+    const ok   = document.getElementById('formSuccess');
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+    data.append('access_key', WEB3FORMS_KEY);
+    data.append('subject', 'New Enquiry from artbyshri.com');
+    data.append('from_name', 'Art by Shri Website');
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+      if (json.success) {
+        form.style.display = 'none';
+        ok.style.display = 'block';
+      } else { throw new Error(json.message); }
+    } catch {
+      btn.textContent = 'Send Enquiry';
+      btn.disabled = false;
+      alert('Something went wrong. Please email hello@artbyshri.com directly.');
     }
-    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
-    function closeLightboxOutside(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
-
-    // ── Contact Form — Web3Forms ──
-    async function submitForm(e) {
-      e.preventDefault();
-      const form = document.getElementById('contactForm');
-      const btn  = document.getElementById('submitBtn');
-      const ok   = document.getElementById('formSuccess');
-
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-
-      const data = new FormData(form);
-      data.append('access_key', '7b5f367d-0fd0-4553-bf87-c08891ddebc5');
-      data.append('subject',    'New Enquiry from artbyshri.com');
-      data.append('from_name',  'Art by Shri Website');
-
-      try {
-        const res  = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: data
-        });
-        const json = await res.json();
-        if (json.success) {
-          form.style.display = 'none';
-          ok.style.display   = 'block';
-        } else {
-          throw new Error(json.message);
-        }
-      } catch (err) {
-        btn.textContent = 'Send Enquiry ✦';
-        btn.disabled    = false;
-        alert('Something went wrong. Please email hello@artbyshri.com directly.');
-      }
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
