@@ -1,5 +1,25 @@
 [
   {
+    "title": "Sunlit Daisies",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "",
+    "price": "150",
+    "available": true,
+    "image": "images/1788605883299-ca3a6440-4b4f-11f1-91d7-69190401d4ed--2-.jpg",
+    "photos": [
+      {
+        "file": "images/1788605879868-20260509_123234--2-.jpg",
+        "role": "gallery"
+      },
+      {
+        "file": "images/1788605883299-ca3a6440-4b4f-11f1-91d7-69190401d4ed--2-.jpg",
+        "role": "main"
+      }
+    ],
+    "description": "Sunlit Daisies"
+  },
+  {
     "title": "Red Reverie poppies",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
@@ -22,7 +42,7 @@
   {
     "title": "Midnight Garden",
     "medium": "Acrylic on Canvas",
-    "size": "18\" Ã 24\"",
+    "size": "18\" ÃÂ 24\"",
     "price": "$320",
     "category": "floral",
     "description": "A vibrant bouquet bursts against a deep crimson-to-purple gradient background, with sunflowers, daisies and roses painted in bold impasto strokes full of joy and energy.",
@@ -32,17 +52,17 @@
   {
     "title": "Sacred Lotus",
     "medium": "Acrylic on Canvas",
-    "size": "12\" Ã 24\"",
+    "size": "12\" ÃÂ 24\"",
     "price": "$380",
     "category": "floral",
-    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals â elegant and deeply spiritual.",
+    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals Ã¢ÂÂ elegant and deeply spiritual.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.16 PM (2).jpeg",
     "available": true
   },
   {
     "title": "Twilight Meadow",
     "medium": "Acrylic on Canvas",
-    "size": "18\" Ã 24\"",
+    "size": "18\" ÃÂ 24\"",
     "price": "$350",
     "category": "landscape",
     "description": "Wildflowers dance under a sweeping pastel sky at dusk, with bees and butterflies caught mid-flight above a meadow of lupins, daisies and cosmos in soft dreamlike colours.",
@@ -52,30 +72,30 @@
   {
     "title": "Hummingbird Sunrise",
     "medium": "Acrylic on Canvas",
-    "size": "30\" Ã 40\"",
+    "size": "30\" ÃÂ 40\"",
     "price": "$750",
     "category": "landscape",
-    "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet â pure joy on canvas.",
+    "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet Ã¢ÂÂ pure joy on canvas.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (1).jpeg",
     "available": true
   },
   {
     "title": "Summer Serenade",
     "medium": "Acrylic on Canvas",
-    "size": "30\" Ã 40\"",
+    "size": "30\" ÃÂ 40\"",
     "price": "$680",
     "category": "landscape",
-    "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers â fresh, light and full of summer calm.",
+    "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers Ã¢ÂÂ fresh, light and full of summer calm.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (2).jpeg",
     "available": true
   },
   {
     "title": "Daisies & Foxglove",
     "medium": "Acrylic on Canvas",
-    "size": "18\" Ã 24\"",
+    "size": "18\" ÃÂ 24\"",
     "price": "$420",
     "category": "floral",
-    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky â a lush energetic celebration of the garden in full bloom.",
+    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky Ã¢ÂÂ a lush energetic celebration of the garden in full bloom.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM.jpeg",
     "available": true
   }
