@@ -163,28 +163,36 @@ input[type=file]{display:none}
   <div class="login-card">
     <div class="login-logo">Art by Shri</div>
     <div class="login-sub">Artist Admin Portal</div>
-    <div class="login-error" id="loginError">Incorrect username or password.</div>
+    <div class="login-error" id="loginError"></div>
 
-    <label class="login-label">Username</label>
-    <input class="login-input" type="text" id="loginUser" placeholder="artist" autocomplete="username">
-
-    <label class="login-label">Password</label>
-    <input class="login-input" type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
-
-    <label class="login-label" style="margin-top:1.25rem">GitHub Personal Access Token
-      <span style="color:var(--blush);font-weight:300;text-transform:none;letter-spacing:0"> — needed to save directly to GitHub</span>
-    </label>
-    <input class="login-input" type="password" id="loginToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
-
-    <button class="login-btn" onclick="doLogin()">Sign In</button>
-
-    <div class="token-info">
-      <strong>First time?</strong> Get your GitHub token:<br>
-      1. Go to <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a><br>
-      2. Name: <strong>artbyshri-admin</strong> · Expiry: <strong>No expiration</strong><br>
-      3. Tick <strong>repo</strong> (full access) → Generate token<br>
-      4. Copy and paste above — saved in this browser only
+    <!-- STEP 1: Username + Password -->
+    <div id="step1">
+      <label class="login-label">Username</label>
+      <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="off">
+      <label class="login-label">Password</label>
+      <input class="login-input" type="password" id="loginPass" placeholder="Password" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="login-btn" id="loginBtn" onclick="doLogin()">Continue →</button>
     </div>
+
+    <!-- STEP 2: OTP -->
+    <div id="step2" style="display:none">
+      <div style="background:var(--green-light);color:var(--green);padding:.75rem 1rem;font-size:.82rem;margin-bottom:1.25rem;text-align:left;line-height:1.6">
+        ✓ A 6-digit code has been sent to <strong>hello@artbyshri.com</strong><br>
+        <span style="font-size:.72rem;opacity:.8">Check your Gmail inbox — expires in 5 minutes</span>
+      </div>
+      <label class="login-label">Enter verification code</label>
+      <input class="login-input" type="text" id="otpInput" placeholder="000000" maxlength="6"
+        style="text-align:center;font-size:1.6rem;letter-spacing:8px;font-family:var(--font-serif)"
+        autocomplete="off" onkeydown="if(event.key==='Enter')verifyOTP()">
+      <button class="login-btn" id="otpBtn" onclick="verifyOTP()">Verify & Sign In</button>
+      <div style="margin-top:.85rem;display:flex;justify-content:space-between;align-items:center">
+        <button onclick="resendOTP()" id="resendBtn" style="background:none;border:none;color:var(--blush);font-size:.75rem;cursor:pointer;font-family:var(--font-sans)">Resend code</button>
+        <button onclick="backToStep1()" style="background:none;border:none;color:var(--muted);font-size:.75rem;cursor:pointer;font-family:var(--font-sans)">← Back</button>
+      </div>
+    </div>
+
+    <!-- GitHub token (hidden, loaded from localStorage) -->
+    <input type="hidden" id="loginToken">
 
     <div class="login-back">← <a href="index.html">Back to website</a></div>
   </div>
@@ -319,49 +327,188 @@ input[type=file]{display:none}
 </div>
 
 <script>
-/* ── CONFIG — update these to match your GitHub repo ── */
-const GITHUB_OWNER = 'tedblox';        // your GitHub username
-const GITHUB_REPO  = 'artbyshri';     // your repo name
+/* ── CONFIG ── */
+const GITHUB_OWNER  = 'tedblox';
+const GITHUB_REPO   = 'artbyshri';
 const GITHUB_BRANCH = 'main';
+const WEB3FORMS_KEY = '7b5f367d-0fd0-4553-bf87-c08891ddebc5';
+const ADMIN_EMAIL   = 'hello@artbyshri.com';
 
 /* ── CREDENTIALS ── */
 let CREDS = { username: 'artist', password: 'blooms2026' };
 let GH_TOKEN = '';
 
-/* ── LOGIN ── */
-function doLogin() {
+/* ── OTP STATE ── */
+let otpCode = '';
+let otpExpiry = 0;
+
+/* ── BRUTE FORCE PROTECTION ── */
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MINS = 15;
+function getAttempts() {
+  const d = JSON.parse(localStorage.getItem('admin_attempts') || '{"count":0,"ts":0}');
+  if (Date.now() - d.ts > LOCKOUT_MINS * 60000) { d.count = 0; d.ts = 0; localStorage.setItem('admin_attempts', JSON.stringify(d)); }
+  return d;
+}
+function recordFail() { const d = getAttempts(); d.count++; d.ts = Date.now(); localStorage.setItem('admin_attempts', JSON.stringify(d)); return d.count; }
+function resetAttempts() { localStorage.removeItem('admin_attempts'); }
+function isLocked() { return getAttempts().count >= MAX_ATTEMPTS; }
+function minsLeft() { const d = JSON.parse(localStorage.getItem('admin_attempts')||'{"ts":0}'); return Math.ceil(LOCKOUT_MINS - (Date.now()-d.ts)/60000); }
+
+/* ── SHOW ERROR ── */
+function showErr(msg) {
+  const el = document.getElementById('loginError');
+  el.textContent = msg; el.classList.add('show');
+}
+function clearErr() { document.getElementById('loginError').classList.remove('show'); }
+
+/* ── STEP 1 — Check credentials, send OTP ── */
+async function doLogin() {
+  clearErr();
+  if (isLocked()) { showErr(`Too many failed attempts. Try again in ${minsLeft()} min.`); return; }
+
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value;
-  const t = document.getElementById('loginToken').value.trim();
-  const err = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
+
+  btn.disabled = true; btn.textContent = 'Checking…';
+  await new Promise(r => setTimeout(r, 800)); // delay
 
   if (u !== CREDS.username || p !== CREDS.password) {
-    err.textContent = 'Incorrect username or password.';
-    err.classList.add('show');
+    const attempts = recordFail();
+    const left = MAX_ATTEMPTS - attempts;
+    showErr(left <= 0
+      ? `Locked for ${LOCKOUT_MINS} minutes after too many attempts.`
+      : `Incorrect credentials. ${left} attempt${left!==1?'s':''} left.`);
     document.getElementById('loginPass').value = '';
+    btn.disabled = false; btn.textContent = 'Continue →';
     return;
   }
-  if (!t) {
-    err.textContent = 'Please enter your GitHub Personal Access Token.';
-    err.classList.add('show');
+
+  // Credentials correct — generate and send OTP
+  btn.textContent = 'Sending code…';
+  otpCode   = String(Math.floor(100000 + Math.random() * 900000));
+  otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+
+  try {
+    const fd = new FormData();
+    fd.append('access_key', WEB3FORMS_KEY);
+    fd.append('to',         ADMIN_EMAIL);
+    fd.append('from_name',  'Art by Shri Admin');
+    fd.append('subject',    'Your admin login code');
+    fd.append('message',    `Your verification code is: ${otpCode}\n\nThis code expires in 5 minutes.\n\nIf you did not request this, someone may be trying to access your admin panel.`);
+    const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body:fd });
+    const json = await res.json();
+    if (!json.success) throw new Error(json.message);
+  } catch(e) {
+    showErr('Could not send verification email. Check your internet connection.');
+    btn.disabled = false; btn.textContent = 'Continue →';
     return;
   }
-  err.classList.remove('show');
-  GH_TOKEN = t;
-  sessionStorage.setItem('admin_auth', 'true');
-  sessionStorage.setItem('admin_user', u);
-  sessionStorage.setItem('gh_token', t);
-  showAdmin(u);
+
+  // Show OTP step
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+  document.getElementById('otpInput').focus();
+  btn.disabled = false; btn.textContent = 'Continue →';
+
+  // Start 5-min countdown
+  startCountdown();
 }
 
+/* ── OTP COUNTDOWN ── */
+let countdownTimer;
+function startCountdown() {
+  clearInterval(countdownTimer);
+  countdownTimer = setInterval(() => {
+    const left = Math.max(0, Math.ceil((otpExpiry - Date.now()) / 1000));
+    const mins = Math.floor(left / 60);
+    const secs = left % 60;
+    const resend = document.getElementById('resendBtn');
+    if (resend) resend.textContent = left > 0
+      ? `Resend code (${mins}:${String(secs).padStart(2,'0')})`
+      : 'Resend code';
+    if (left === 0) { clearInterval(countdownTimer); otpCode = ''; }
+  }, 1000);
+}
+
+/* ── STEP 2 — Verify OTP ── */
+function verifyOTP() {
+  clearErr();
+  const entered = document.getElementById('otpInput').value.trim();
+  const btn = document.getElementById('otpBtn');
+
+  if (!otpCode) { showErr('Code expired. Please request a new one.'); return; }
+  if (Date.now() > otpExpiry) { showErr('Code expired. Please request a new one.'); otpCode = ''; return; }
+
+  btn.disabled = true; btn.textContent = 'Verifying…';
+  setTimeout(() => {
+    if (entered !== otpCode) {
+      showErr('Incorrect code. Please try again.');
+      btn.disabled = false; btn.textContent = 'Verify & Sign In';
+      return;
+    }
+    // Success
+    clearInterval(countdownTimer);
+    resetAttempts();
+    otpCode = '';
+    const token = localStorage.getItem('gh_token') || '';
+    GH_TOKEN = token;
+    sessionStorage.setItem('admin_auth', 'true');
+    sessionStorage.setItem('admin_user', document.getElementById('loginUser').value.trim());
+    showAdmin(document.getElementById('loginUser').value.trim());
+    btn.disabled = false; btn.textContent = 'Verify & Sign In';
+  }, 500);
+}
+
+/* ── RESEND OTP ── */
+async function resendOTP() {
+  document.getElementById('otpInput').value = '';
+  clearErr();
+  await doLoginSendOTP();
+}
+
+async function doLoginSendOTP() {
+  otpCode   = String(Math.floor(100000 + Math.random() * 900000));
+  otpExpiry = Date.now() + 5 * 60 * 1000;
+  try {
+    const fd = new FormData();
+    fd.append('access_key', WEB3FORMS_KEY);
+    fd.append('to',         ADMIN_EMAIL);
+    fd.append('from_name',  'Art by Shri Admin');
+    fd.append('subject',    'Your admin login code (resent)');
+    fd.append('message',    `Your new verification code is: ${otpCode}\n\nExpires in 5 minutes.`);
+    await fetch('https://api.web3forms.com/submit', { method:'POST', body:fd });
+  } catch { showErr('Could not resend. Check your internet.'); return; }
+  startCountdown();
+  document.getElementById('otpInput').focus();
+}
+
+/* ── BACK TO STEP 1 ── */
+function backToStep1() {
+  clearErr(); clearInterval(countdownTimer); otpCode = '';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('loginPass').value = '';
+  document.getElementById('otpInput').value = '';
+}
+
+/* ── LOGOUT ── */
 function doLogout() {
   sessionStorage.clear();
-  GH_TOKEN = '';
+  GH_TOKEN = ''; otpCode = '';
+  clearInterval(countdownTimer);
   document.getElementById('admin-screen').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
-  ['loginUser','loginPass','loginToken'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  document.getElementById('otpInput').value = '';
+  document.getElementById('step1').style.display = 'block';
+  document.getElementById('step2').style.display = 'none';
+  clearErr();
 }
 
+/* ── SHOW ADMIN ── */
 function showAdmin(user) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('admin-screen').style.display = 'block';
@@ -369,8 +516,20 @@ function showAdmin(user) {
   loadPaintings();
 }
 
+/* ── GITHUB TOKEN SETUP ── */
+function promptForToken() {
+  const t = prompt('Enter your GitHub Personal Access Token (ghp_...):\n\nGet one at: github.com/settings/tokens/new\n(Select repo scope, no expiry)');
+  if (t && t.startsWith('ghp_')) {
+    localStorage.setItem('gh_token', t);
+    GH_TOKEN = t;
+    return true;
+  }
+  return false;
+}
+
 window.addEventListener('load', () => {
-  const token = sessionStorage.getItem('gh_token');
+  // Auto-login if session still active
+  const token = localStorage.getItem('gh_token');
   if (sessionStorage.getItem('admin_auth') === 'true' && token) {
     GH_TOKEN = token;
     showAdmin(sessionStorage.getItem('admin_user') || 'artist');
@@ -587,6 +746,14 @@ async function savePainting() {
   const price = document.getElementById('fPrice').value.trim();
   if (!title) { alert('Please enter a painting title.'); return; }
   if (!price) { alert('Please enter a price.'); return; }
+
+  // Ensure GitHub token is available
+  if (!GH_TOKEN) {
+    GH_TOKEN = localStorage.getItem('gh_token') || '';
+    if (!GH_TOKEN) {
+      if (!promptForToken()) { alert('GitHub token needed to save. Please sign out and sign in again.'); return; }
+    }
+  }
 
   const btn = document.getElementById('saveBtn');
   const progressWrap = document.getElementById('progressWrap');
