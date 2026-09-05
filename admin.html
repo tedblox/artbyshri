@@ -20,48 +20,50 @@ body{font-family:var(--font-sans);background:var(--cream);color:var(--text);min-
 
 /* ── LOGIN ── */
 #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--blush-pale) 0%,var(--cream) 60%)}
-.login-card{background:#fff;border:1px solid var(--border);padding:3rem 2.5rem;width:100%;max-width:400px;text-align:center}
+.login-card{background:#fff;border:1px solid var(--border);padding:3rem 2.5rem;width:100%;max-width:420px;text-align:center}
 .login-logo{font-family:var(--font-serif);font-size:1.8rem;font-style:italic;color:var(--blush);margin-bottom:.25rem}
-.login-sub{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2.5rem}
+.login-sub{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
 .login-label{display:block;text-align:left;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;margin-top:1rem}
 .login-input{width:100%;padding:.8rem 1rem;border:1px solid var(--border);background:var(--cream);font-family:var(--font-sans);font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s}
 .login-input:focus{border-color:var(--blush)}
 .login-btn{width:100%;margin-top:1.5rem;padding:.9rem;background:var(--dark);color:#fff;border:none;cursor:pointer;font-family:var(--font-sans);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
 .login-btn:hover{background:var(--blush)}
-.login-error{background:var(--red-light);color:var(--red);border:1px solid #f5c6c4;padding:.65rem 1rem;font-size:.82rem;margin-bottom:1rem;display:none}
+.login-error{background:var(--red-light);color:var(--red);border:1px solid #f5c6c4;padding:.65rem 1rem;font-size:.82rem;margin-bottom:1rem;display:none;text-align:left}
 .login-error.show{display:block}
-.login-back{margin-top:1.5rem;font-size:.72rem;color:var(--muted)}
+.login-back{margin-top:1.25rem;font-size:.72rem;color:var(--muted)}
 .login-back a{color:var(--blush);text-decoration:none}
+.token-info{background:var(--blush-pale);border:1px solid var(--blush-light);padding:.75rem 1rem;font-size:.78rem;color:var(--muted);text-align:left;margin-top:1rem;line-height:1.65}
+.token-info a{color:var(--blush);text-decoration:none}
+.token-info strong{color:var(--dark)}
 
-/* ── ADMIN SHELL ── */
+/* ── ADMIN ── */
 #admin-screen{display:none;min-height:100vh}
 .admin-bar{background:var(--dark);display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;position:sticky;top:0;z-index:50}
 .admin-bar-logo{font-family:var(--font-serif);font-size:1.2rem;font-style:italic;color:var(--blush)}
-.admin-bar-logo span{font-family:var(--font-sans);font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-left:.75rem;font-style:normal}
-.admin-bar-right{display:flex;align-items:center;gap:1rem}
-.admin-user{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.5px}
-.bar-btn{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;padding:.4rem 1rem;cursor:pointer;font-family:var(--font-sans);border:none;transition:all .2s}
-.bar-btn-outline{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15)}
+.admin-bar-logo span{font-family:var(--font-sans);font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-left:.75rem;font-style:normal}
+.admin-bar-right{display:flex;align-items:center;gap:.75rem}
+.admin-user{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.5px}
+.bar-btn{font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;padding:.4rem .9rem;cursor:pointer;font-family:var(--font-sans);border:none;transition:all .2s}
+.bar-btn-outline{background:transparent;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.15)}
 .bar-btn-outline:hover{border-color:var(--blush);color:var(--blush)}
 .bar-btn-solid{background:#fff;color:var(--dark)}
 .bar-btn-solid:hover{background:var(--blush);color:#fff}
-
-.admin-main{max-width:1200px;margin:0 auto;padding:2.5rem 2rem}
+.admin-main{max-width:1100px;margin:0 auto;padding:2.5rem 2rem}
 
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
-.stat-card{background:#fff;border:1px solid var(--border);padding:1.25rem 1.5rem}
-.stat-label{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.stat-val{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--dark);line-height:1}
-.stat-sub{font-size:.72rem;color:var(--blush);margin-top:.2rem}
+.stat-card{background:#fff;border:1px solid var(--border);padding:1.1rem 1.25rem}
+.stat-label{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.stat-val{font-family:var(--font-serif);font-size:1.9rem;font-weight:700;color:var(--dark);line-height:1}
+.stat-sub{font-size:.68rem;color:var(--blush);margin-top:.2rem}
 
-/* SECTION CARD */
+/* CARDS */
 .sec-card{background:#fff;border:1px solid var(--border);margin-bottom:1.5rem;overflow:hidden}
-.sec-card-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:var(--blush-pale)}
-.sec-card-title{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);font-weight:500}
+.sec-card-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid var(--border);background:var(--blush-pale)}
+.sec-card-title{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--dark);font-weight:500}
 .sec-card-body{padding:1.75rem}
 
-/* ADD PAINTING FORM */
+/* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
 .form-group{display:flex;flex-direction:column;gap:.35rem}
 .form-group.full{grid-column:span 2}
@@ -69,75 +71,80 @@ body{font-family:var(--font-sans);background:var(--cream);color:var(--text);min-
 .form-field{background:var(--cream);border:1px solid var(--border);color:var(--text);padding:.75rem .9rem;font-family:var(--font-sans);font-size:.88rem;outline:none;transition:border-color .2s;width:100%}
 .form-field:focus{border-color:var(--blush)}
 .form-field::placeholder{color:#C8B8A8}
-textarea.form-field{height:90px;resize:vertical}
+textarea.form-field{height:85px;resize:vertical}
 select.form-field{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A8A7A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center}
 
-/* MULTI PHOTO UPLOAD */
-.photo-upload-area{border:2px dashed var(--border);padding:2rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--blush-pale)}
-.photo-upload-area:hover,.photo-upload-area.drag-over{border-color:var(--blush);background:var(--blush-light)}
-.photo-upload-icon{font-size:2.5rem;margin-bottom:.75rem}
-.photo-upload-title{font-family:var(--font-serif);font-size:1.2rem;color:var(--dark);margin-bottom:.35rem}
-.photo-upload-sub{font-size:.8rem;color:var(--muted);margin-bottom:1rem;font-weight:300}
-.photo-types{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
-.photo-type{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.2rem .6rem;background:#fff}
-.btn-browse{background:var(--dark);color:#fff;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:.7rem 1.75rem;border:none;cursor:pointer;font-family:var(--font-sans);transition:background .2s}
+/* PHOTO UPLOAD */
+.photo-zone{border:2px dashed var(--border);padding:1.75rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--blush-pale);margin-bottom:1rem}
+.photo-zone:hover,.photo-zone.drag-over{border-color:var(--blush);background:var(--blush-light)}
+.photo-zone-icon{font-size:2rem;margin-bottom:.5rem}
+.photo-zone h3{font-family:var(--font-serif);font-size:1.1rem;color:var(--dark);margin-bottom:.3rem}
+.photo-zone p{font-size:.78rem;color:var(--muted);font-weight:300;margin-bottom:.85rem}
+.btn-browse{background:var(--dark);color:#fff;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.6rem 1.5rem;border:none;cursor:pointer;font-family:var(--font-sans);transition:background .2s}
 .btn-browse:hover{background:var(--blush)}
+
+/* PHOTO PREVIEWS */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.65rem;margin-top:1rem}
+.photo-card{position:relative;border:1px solid var(--border);background:#fff;overflow:hidden}
+.photo-card img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.photo-card-info{padding:.45rem .5rem}
+.photo-card-name{font-size:.6rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo-role-sel{width:100%;font-size:.6rem;padding:.28rem .35rem;border:1px solid var(--border);background:var(--cream);color:var(--text);font-family:var(--font-sans);outline:none;margin-top:.25rem}
+.photo-role-sel:focus{border-color:var(--blush)}
+.photo-rm{position:absolute;top:.3rem;right:.3rem;width:18px;height:18px;background:rgba(42,26,16,.7);color:#fff;border:none;cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center;line-height:1}
+.photo-rm:hover{background:var(--red)}
+.main-badge{position:absolute;top:.3rem;left:.3rem;background:var(--blush);color:#fff;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;padding:.15rem .4rem}
 input[type=file]{display:none}
 
-/* PHOTO PREVIEW GRID */
-.photo-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-top:1.25rem}
-.photo-preview-card{position:relative;border:1px solid var(--border);background:#fff;overflow:hidden}
-.photo-preview-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
-.photo-preview-swatch{width:100%;aspect-ratio:1/1;background:var(--blush-light);display:flex;align-items:center;justify-content:center;font-size:2rem}
-.photo-preview-info{padding:.5rem .6rem}
-.photo-preview-name{font-size:.65rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.photo-preview-role{font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--blush);margin-top:.15rem}
-.photo-remove{position:absolute;top:.4rem;right:.4rem;width:20px;height:20px;background:rgba(42,26,16,.7);color:#fff;border:none;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s}
-.photo-remove:hover{background:var(--red)}
-.photo-main-badge{position:absolute;top:.4rem;left:.4rem;background:var(--blush);color:#fff;font-size:.55rem;letter-spacing:1px;text-transform:uppercase;padding:.15rem .45rem}
-.photo-role-select{width:100%;margin-top:.35rem;background:var(--cream);border:1px solid var(--border);font-family:var(--font-sans);font-size:.65rem;padding:.3rem .4rem;color:var(--text);outline:none}
-.photo-role-select:focus{border-color:var(--blush)}
+/* PROGRESS */
+.progress-wrap{display:none;background:var(--blush-pale);border:1px solid var(--blush-light);padding:1.25rem;margin-top:1rem}
+.progress-title{font-size:.72rem;font-weight:500;color:var(--dark);margin-bottom:.85rem;letter-spacing:.5px}
+.progress-steps{display:flex;flex-direction:column;gap:.5rem}
+.progress-step{display:flex;align-items:center;gap:.65rem;font-size:.8rem;color:var(--muted)}
+.step-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0}
+.step-pending{background:var(--border);color:var(--muted)}
+.step-active{background:var(--blush);color:#fff;animation:pulse .8s ease-in-out infinite alternate}
+.step-done{background:var(--green);color:#fff}
+.step-error{background:var(--red);color:#fff}
+@keyframes pulse{from{opacity:.7}to{opacity:1}}
+.progress-bar-wrap{background:var(--border);height:4px;border-radius:2px;margin-top:1rem;overflow:hidden}
+.progress-bar{height:100%;background:var(--blush);width:0%;transition:width .4s ease;border-radius:2px}
 
 /* FORM ACTIONS */
-.form-actions{display:flex;gap:.75rem;align-items:center;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.form-actions{display:flex;gap:.75rem;align-items:center;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);flex-wrap:wrap}
 .btn-save{background:var(--green);color:#fff;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;padding:.85rem 2rem;border:none;cursor:pointer;font-family:var(--font-sans);transition:background .2s}
-.btn-save:hover{background:#3A6C4A}
-.btn-reset{background:transparent;color:var(--muted);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;padding:.85rem 1.5rem;border:1px solid var(--border);cursor:pointer;font-family:var(--font-sans);transition:all .2s}
+.btn-save:hover:not(:disabled){background:#3A6C4A}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+.btn-reset{background:transparent;color:var(--muted);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;padding:.85rem 1.25rem;border:1px solid var(--border);cursor:pointer;font-family:var(--font-sans);transition:all .2s}
 .btn-reset:hover{border-color:var(--red);color:var(--red)}
-
-/* JSON OUTPUT */
-.json-output{background:var(--dark);color:#E8D8C8;font-family:monospace;font-size:.78rem;padding:1.25rem;line-height:1.7;white-space:pre-wrap;word-break:break-all;border-radius:0;max-height:300px;overflow-y:auto;display:none}
-.btn-copy{background:var(--blush);color:#fff;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:.6rem 1.5rem;border:none;cursor:pointer;font-family:var(--font-sans);transition:background .2s;margin-top:.75rem}
-.btn-copy:hover{background:var(--dark)}
-.copy-tip{font-size:.78rem;color:var(--muted);margin-top:.75rem;line-height:1.65;padding:.85rem 1rem;background:var(--blush-pale);border-left:3px solid var(--blush)}
-.copy-tip strong{color:var(--dark)}
+.save-result{font-size:.82rem;padding:.65rem .9rem;display:none}
+.save-result.ok{background:var(--green-light);color:var(--green)}
+.save-result.err{background:var(--red-light);color:var(--red)}
 
 /* PAINTINGS LIST */
-.paintings-list{display:flex;flex-direction:column;gap:0}
 .p-row{display:flex;align-items:center;gap:1rem;padding:.85rem 1.5rem;border-bottom:1px solid var(--border);transition:background .15s}
 .p-row:last-child{border-bottom:none}
 .p-row:hover{background:var(--blush-pale)}
 .p-row-thumb{width:52px;height:52px;object-fit:cover;flex-shrink:0;background:var(--blush-light)}
-.p-row-thumb-sw{width:52px;height:52px;flex-shrink:0}
+.p-row-sw{width:52px;height:52px;flex-shrink:0;background:var(--blush-light)}
 .p-row-info{flex:1;min-width:0}
-.p-row-title{font-size:.9rem;font-weight:500;color:var(--dark);margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.p-row-meta{font-size:.72rem;color:var(--muted)}
-.p-row-photos{font-size:.65rem;color:var(--blush);letter-spacing:.5px;margin-top:.15rem}
-.p-row-price{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--blush);white-space:nowrap}
-.p-row-status{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .65rem;white-space:nowrap}
-.s-avail{background:var(--green-light);color:var(--green)}
-.s-sold{background:var(--blush-pale);color:var(--muted)}
-.row-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.28rem .8rem;font-family:var(--font-sans);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.p-row-title{font-size:.88rem;font-weight:500;color:var(--dark);margin-bottom:.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-row-meta{font-size:.7rem;color:var(--muted)}
+.p-row-photos{font-size:.65rem;color:var(--blush);margin-top:.1rem}
+.p-row-price{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;color:var(--blush);white-space:nowrap}
+.p-status-pill{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;padding:.2rem .6rem;white-space:nowrap}
+.pill-avail{background:var(--green-light);color:var(--green)}
+.pill-sold{background:var(--blush-pale);color:var(--muted)}
+.row-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.28rem .75rem;font-family:var(--font-sans);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s}
 .row-btn:hover{border-color:var(--dark);color:var(--dark)}
 .row-btn.danger:hover{border-color:var(--red);color:var(--red)}
 
 /* CHANGE PASSWORD */
 .pw-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;align-items:end}
-.pw-msg{font-size:.82rem;margin-top:.85rem;padding:.65rem .9rem}
+.pw-msg{font-size:.8rem;padding:.6rem .85rem;display:none;margin-top:.75rem}
 .pw-msg.ok{background:var(--green-light);color:var(--green)}
 .pw-msg.err{background:var(--red-light);color:var(--red)}
 
-/* RESPONSIVE */
 @media(max-width:768px){
   .stats-row{grid-template-columns:1fr 1fr}
   .form-grid{grid-template-columns:1fr}
@@ -145,6 +152,7 @@ input[type=file]{display:none}
   .pw-grid{grid-template-columns:1fr}
   .admin-bar{padding:.85rem 1.25rem}
   .admin-main{padding:1.5rem 1rem}
+  .admin-user{display:none}
 }
 </style>
 </head>
@@ -156,22 +164,36 @@ input[type=file]{display:none}
     <div class="login-logo">Art by Shri</div>
     <div class="login-sub">Artist Admin Portal</div>
     <div class="login-error" id="loginError">Incorrect username or password.</div>
+
     <label class="login-label">Username</label>
-    <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="username">
+    <input class="login-input" type="text" id="loginUser" placeholder="artist" autocomplete="username">
+
     <label class="login-label">Password</label>
     <input class="login-input" type="password" id="loginPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+
+    <label class="login-label" style="margin-top:1.25rem">GitHub Personal Access Token
+      <span style="color:var(--blush);font-weight:300;text-transform:none;letter-spacing:0"> — needed to save directly to GitHub</span>
+    </label>
+    <input class="login-input" type="password" id="loginToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+
     <button class="login-btn" onclick="doLogin()">Sign In</button>
+
+    <div class="token-info">
+      <strong>First time?</strong> Get your GitHub token:<br>
+      1. Go to <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a><br>
+      2. Name: <strong>artbyshri-admin</strong> · Expiry: <strong>No expiration</strong><br>
+      3. Tick <strong>repo</strong> (full access) → Generate token<br>
+      4. Copy and paste above — saved in this browser only
+    </div>
+
     <div class="login-back">← <a href="index.html">Back to website</a></div>
   </div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin-screen">
-
   <div class="admin-bar">
-    <div>
-      <span class="admin-bar-logo">Art by Shri <span>Admin Portal</span></span>
-    </div>
+    <div><span class="admin-bar-logo">Art by Shri <span>Admin</span></span></div>
     <div class="admin-bar-right">
       <span class="admin-user" id="adminUserLabel"></span>
       <a href="index.html" target="_blank" class="bar-btn bar-btn-outline">View Site ↗</a>
@@ -183,53 +205,36 @@ input[type=file]{display:none}
 
     <!-- STATS -->
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-label">Total Paintings</div>
-        <div class="stat-val" id="statTotal">—</div>
-        <div class="stat-sub">in collection</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Available</div>
-        <div class="stat-val" id="statAvail">—</div>
-        <div class="stat-sub">ready to sell</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Sold</div>
-        <div class="stat-val" id="statSold">—</div>
-        <div class="stat-sub">all time</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Portfolio Value</div>
-        <div class="stat-val" id="statValue">—</div>
-        <div class="stat-sub">available works</div>
-      </div>
+      <div class="stat-card"><div class="stat-label">Total Paintings</div><div class="stat-val" id="statTotal">—</div><div class="stat-sub">in collection</div></div>
+      <div class="stat-card"><div class="stat-label">Available</div><div class="stat-val" id="statAvail">—</div><div class="stat-sub">ready to sell</div></div>
+      <div class="stat-card"><div class="stat-label">Sold</div><div class="stat-val" id="statSold">—</div><div class="stat-sub">all time</div></div>
+      <div class="stat-card"><div class="stat-label">Portfolio Value</div><div class="stat-val" id="statValue">—</div><div class="stat-sub">available works</div></div>
     </div>
 
-    <!-- ADD NEW PAINTING -->
+    <!-- ADD PAINTING -->
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">Add New Painting</span>
+        <span style="font-size:.68rem;color:var(--muted)">Saves directly to GitHub — live on site within 2 min</span>
       </div>
       <div class="sec-card-body">
 
-        <!-- PHOTO UPLOAD -->
-        <div style="margin-bottom:1.5rem">
-          <div class="form-label" style="margin-bottom:.6rem">Painting Photos <span style="color:var(--muted);font-weight:300;letter-spacing:0;text-transform:none;font-size:.75rem">— upload multiple (main shot, wall mockup, close-up texture, etc.)</span></div>
-          <div class="photo-upload-area" id="uploadZone" onclick="document.getElementById('photoInput').click()">
-            <div class="photo-upload-icon" id="uploadIcon">🖼</div>
-            <div class="photo-upload-title">Drop photos here</div>
-            <div class="photo-upload-sub">Add your main painting photo, wall mockup, detail/texture shots</div>
-            <div class="photo-types">
-              <span class="photo-type">JPG</span><span class="photo-type">PNG</span><span class="photo-type">WEBP</span>
-            </div>
-            <button class="btn-browse" onclick="event.stopPropagation();document.getElementById('photoInput').click()">Browse Photos</button>
-            <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotos(event)">
-          </div>
-          <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+        <!-- PHOTOS -->
+        <div class="form-label" style="margin-bottom:.6rem">
+          Photos
+          <span style="color:var(--muted);font-weight:300;text-transform:none;letter-spacing:0;font-size:.75rem"> — upload main shot, wall mockup, close-up texture, etc.</span>
         </div>
+        <div class="photo-zone" id="photoZone" onclick="document.getElementById('photoInput').click()">
+          <div class="photo-zone-icon" id="zoneIcon">🖼</div>
+          <h3>Drop photos here or click to browse</h3>
+          <p>Add multiple photos — main painting, on-wall mockup, texture close-up</p>
+          <button class="btn-browse" onclick="event.stopPropagation();document.getElementById('photoInput').click()">Browse Photos</button>
+          <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotos(event)">
+        </div>
+        <div class="photo-grid" id="photoGrid"></div>
 
-        <!-- PAINTING DETAILS -->
-        <div class="form-grid">
+        <!-- DETAILS -->
+        <div class="form-grid" style="margin-top:1.5rem">
           <div class="form-group">
             <label class="form-label">Painting Title *</label>
             <input class="form-field" type="text" id="fTitle" placeholder="e.g. Wildflower Meadow at Sunset">
@@ -240,7 +245,7 @@ input[type=file]{display:none}
           </div>
           <div class="form-group">
             <label class="form-label">Category</label>
-            <select class="form-field" id="fCategory">
+            <select class="form-field" id="fCat">
               <option value="floral">Floral</option>
               <option value="landscape">Landscape</option>
               <option value="abstract">Abstract</option>
@@ -261,31 +266,25 @@ input[type=file]{display:none}
           </div>
           <div class="form-group">
             <label class="form-label">Medium</label>
-            <input class="form-field" type="text" id="fMedium" placeholder="e.g. Heavy Body Acrylic + Gel Medium" value="Heavy Body Acrylic + Gel Medium">
+            <input class="form-field" type="text" id="fMedium" placeholder="Heavy Body Acrylic + Gel Medium" value="Heavy Body Acrylic + Gel Medium">
           </div>
           <div class="form-group full">
             <label class="form-label">Description</label>
-            <textarea class="form-field" id="fDesc" placeholder="Describe the painting — colours, technique, inspiration, what makes it special…"></textarea>
+            <textarea class="form-field" id="fDesc" placeholder="Describe the painting — colours, technique, inspiration…"></textarea>
           </div>
         </div>
 
         <div class="form-actions">
-          <button class="btn-save" onclick="generateEntry()">Generate paintings.json Entry</button>
-          <button class="btn-reset" onclick="resetForm()">Clear Form</button>
+          <button class="btn-save" id="saveBtn" onclick="savePainting()">💾 Save to GitHub</button>
+          <button class="btn-reset" onclick="resetForm()">Clear</button>
+          <div class="save-result" id="saveResult"></div>
         </div>
 
-        <!-- JSON OUTPUT -->
-        <div style="margin-top:1.5rem;display:none" id="outputSection">
-          <div class="form-label" style="margin-bottom:.6rem">Your paintings.json entry — copy and add to your file in GitHub</div>
-          <div class="json-output" id="jsonOutput"></div>
-          <button class="btn-copy" onclick="copyJSON()">Copy to Clipboard</button>
-          <div class="copy-tip">
-            <strong>How to add this to your site:</strong><br>
-            1. Go to your GitHub repo → click <strong>paintings.json</strong> → click the pencil icon<br>
-            2. Find the opening <strong>[</strong> bracket → paste this entry after it (add a comma if there are other entries)<br>
-            3. Also upload your photos to the <strong>images/</strong> folder in GitHub with the exact filenames shown above<br>
-            4. Click <strong>Commit changes</strong> — your painting appears on the site instantly ✓
-          </div>
+        <!-- PROGRESS -->
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-title">Saving your painting…</div>
+          <div class="progress-steps" id="progressSteps"></div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
         </div>
 
       </div>
@@ -295,37 +294,24 @@ input[type=file]{display:none}
     <div class="sec-card">
       <div class="sec-card-head">
         <span class="sec-card-title">Your Paintings</span>
-        <span style="font-size:.68rem;color:var(--muted)">Loaded from paintings.json</span>
+        <button class="bar-btn bar-btn-outline" style="font-size:.6rem;padding:.3rem .8rem" onclick="loadPaintings()">↻ Refresh</button>
       </div>
-      <div class="paintings-list" id="paintingsList">
-        <div style="padding:2rem;text-align:center;color:var(--muted);font-size:.85rem">Loading paintings…</div>
+      <div id="paintingsList" style="min-height:80px">
+        <div style="padding:2rem;text-align:center;color:var(--muted);font-size:.82rem">Loading…</div>
       </div>
     </div>
 
     <!-- CHANGE PASSWORD -->
     <div class="sec-card">
-      <div class="sec-card-head">
-        <span class="sec-card-title">Change Password</span>
-      </div>
+      <div class="sec-card-head"><span class="sec-card-title">Change Password</span></div>
       <div class="sec-card-body">
         <div class="pw-grid">
-          <div class="form-group">
-            <label class="form-label">Current Password</label>
-            <input class="form-field" type="password" id="pwCurrent" placeholder="Current password">
-          </div>
-          <div class="form-group">
-            <label class="form-label">New Password</label>
-            <input class="form-field" type="password" id="pwNew" placeholder="New password (min 6 chars)">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Confirm New Password</label>
-            <input class="form-field" type="password" id="pwConfirm" placeholder="Confirm new password">
-          </div>
+          <div class="form-group"><label class="form-label">Current Password</label><input class="form-field" type="password" id="pwCur" placeholder="Current password"></div>
+          <div class="form-group"><label class="form-label">New Password</label><input class="form-field" type="password" id="pwNew" placeholder="Min 6 characters"></div>
+          <div class="form-group"><label class="form-label">Confirm</label><input class="form-field" type="password" id="pwConf" placeholder="Confirm new password"></div>
         </div>
-        <div style="margin-top:1rem;display:flex;align-items:center;gap:1rem">
-          <button class="btn-save" onclick="changePassword()">Update Password</button>
-          <div id="pwMsg" style="display:none" class="pw-msg"></div>
-        </div>
+        <button class="btn-save" style="margin-top:1rem" onclick="changePw()">Update Password</button>
+        <div class="pw-msg" id="pwMsg"></div>
       </div>
     </div>
 
@@ -333,273 +319,382 @@ input[type=file]{display:none}
 </div>
 
 <script>
+/* ── CONFIG — update these to match your GitHub repo ── */
+const GITHUB_OWNER = 'tedblox';        // your GitHub username
+const GITHUB_REPO  = 'artbyshri';     // your repo name
+const GITHUB_BRANCH = 'main';
+
 /* ── CREDENTIALS ── */
 let CREDS = { username: 'artist', password: 'blooms2026' };
+let GH_TOKEN = '';
 
 /* ── LOGIN ── */
 function doLogin() {
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value;
+  const t = document.getElementById('loginToken').value.trim();
   const err = document.getElementById('loginError');
-  if (u === CREDS.username && p === CREDS.password) {
-    err.classList.remove('show');
-    sessionStorage.setItem('admin_auth','true');
-    sessionStorage.setItem('admin_user', u);
-    showAdmin(u);
-  } else {
+
+  if (u !== CREDS.username || p !== CREDS.password) {
+    err.textContent = 'Incorrect username or password.';
     err.classList.add('show');
     document.getElementById('loginPass').value = '';
-    document.getElementById('loginPass').focus();
+    return;
   }
+  if (!t) {
+    err.textContent = 'Please enter your GitHub Personal Access Token.';
+    err.classList.add('show');
+    return;
+  }
+  err.classList.remove('show');
+  GH_TOKEN = t;
+  sessionStorage.setItem('admin_auth', 'true');
+  sessionStorage.setItem('admin_user', u);
+  sessionStorage.setItem('gh_token', t);
+  showAdmin(u);
 }
 
 function doLogout() {
   sessionStorage.clear();
+  GH_TOKEN = '';
   document.getElementById('admin-screen').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('loginUser').value = '';
-  document.getElementById('loginPass').value = '';
+  ['loginUser','loginPass','loginToken'].forEach(id => document.getElementById(id).value = '');
 }
 
 function showAdmin(user) {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('admin-screen').style.display = 'block';
-  document.getElementById('adminUserLabel').textContent = 'Signed in as ' + user;
+  document.getElementById('adminUserLabel').textContent = user;
   loadPaintings();
 }
 
 window.addEventListener('load', () => {
-  if (sessionStorage.getItem('admin_auth') === 'true') {
+  const token = sessionStorage.getItem('gh_token');
+  if (sessionStorage.getItem('admin_auth') === 'true' && token) {
+    GH_TOKEN = token;
     showAdmin(sessionStorage.getItem('admin_user') || 'artist');
   }
 });
 
-/* ── PAINTINGS ── */
-let paintings = [];
-const swatches = [
-  'linear-gradient(170deg,#87CEEB,#FFD580,#FF7A50,#4A8C5C)',
-  'linear-gradient(160deg,#FFB5C8,#B0E0FF,#4A8C5C)',
-  'linear-gradient(160deg,#E8C8A0,#C09060,#A07848)',
-  'linear-gradient(160deg,#B0D4FF,#4A8C5C)',
-  'linear-gradient(160deg,#FFD580,#FF7A50,#2D5A2D)',
-  'linear-gradient(160deg,#C9A8E0,#4A7FD4)'
-];
+/* ── GITHUB API ── */
+const API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`;
 
-function loadPaintings() {
-  fetch('paintings.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(data => { paintings = data; renderStats(); renderList(); })
-    .catch(() => {
-      paintings = [];
-      renderStats();
-      document.getElementById('paintingsList').innerHTML =
-        '<div style="padding:2rem;text-align:center;color:var(--muted);font-size:.85rem">Could not load paintings.json — make sure it exists in your GitHub repo.</div>';
-    });
+async function ghGet(path) {
+  const r = await fetch(`${API}${path}`, {
+    headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!r.ok) throw new Error(`GitHub API error: ${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+async function ghPut(path, body) {
+  const r = await fetch(`${API}${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.message || `GitHub API error: ${r.status}`);
+  }
+  return r.json();
+}
+
+async function uploadImageToGitHub(file, filename) {
+  // Convert file to base64
+  const base64 = await new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload = () => res(reader.result.split(',')[1]);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
+  });
+
+  // Check if file exists (to get SHA for update)
+  let sha;
+  try {
+    const existing = await ghGet(`/contents/images/${filename}`);
+    sha = existing.sha;
+  } catch { /* new file — no SHA needed */ }
+
+  const body = {
+    message: `Add painting image: ${filename}`,
+    content: base64,
+    branch: GITHUB_BRANCH
+  };
+  if (sha) body.sha = sha;
+
+  await ghPut(`/contents/images/${filename}`, body);
+}
+
+async function getPaintingsJson() {
+  try {
+    const data = await ghGet('/contents/paintings.json');
+    const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    return { paintings: content, sha: data.sha };
+  } catch {
+    return { paintings: [], sha: null };
+  }
+}
+
+async function savePaintingsJson(paintings, sha) {
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(paintings, null, 2))));
+  const body = {
+    message: 'Update paintings.json via admin portal',
+    content,
+    branch: GITHUB_BRANCH
+  };
+  if (sha) body.sha = sha;
+  await ghPut('/contents/paintings.json', body);
+}
+
+/* ── PAINTINGS LIST ── */
+let allPaintings = [];
+
+async function loadPaintings() {
+  try {
+    const { paintings } = await getPaintingsJson();
+    allPaintings = paintings;
+    renderStats();
+    renderList();
+  } catch (e) {
+    document.getElementById('paintingsList').innerHTML =
+      `<div style="padding:2rem;text-align:center;color:var(--red);font-size:.82rem">Could not load paintings.json: ${e.message}</div>`;
+  }
 }
 
 function renderStats() {
-  const avail = paintings.filter(p => p.available);
-  const sold  = paintings.filter(p => !p.available);
-  const value = avail.reduce((s, p) => {
-    const n = parseFloat(String(p.price).replace(/[^0-9.]/g, ''));
-    return s + (isNaN(n) ? 0 : n);
-  }, 0);
-  document.getElementById('statTotal').textContent = paintings.length;
+  const avail = allPaintings.filter(p => p.available);
+  const val   = avail.reduce((s,p) => s + (parseFloat(String(p.price).replace(/[^0-9.]/g,'')) || 0), 0);
+  document.getElementById('statTotal').textContent = allPaintings.length;
   document.getElementById('statAvail').textContent = avail.length;
-  document.getElementById('statSold').textContent  = sold.length;
-  document.getElementById('statValue').textContent = value > 0 ? '$' + Math.round(value / 1000) + 'k' : '—';
+  document.getElementById('statSold').textContent  = allPaintings.length - avail.length;
+  document.getElementById('statValue').textContent = val > 0 ? '$' + Math.round(val/1000) + 'k' : '—';
 }
 
 function renderList() {
-  const list = document.getElementById('paintingsList');
-  if (!paintings.length) {
-    list.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--muted);font-size:.85rem">No paintings yet — add your first one above.</div>';
+  const el = document.getElementById('paintingsList');
+  if (!allPaintings.length) {
+    el.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--muted);font-size:.82rem">No paintings yet — add your first one above.</div>';
     return;
   }
-  list.innerHTML = paintings.map((p, i) => {
-    const sw = swatches[i % swatches.length];
+  el.innerHTML = allPaintings.map((p, i) => {
     const photos = p.photos ? p.photos.length : (p.image ? 1 : 0);
-    const thumbHtml = p.image
-      ? `<img class="p-row-thumb" src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="p-row-thumb-sw" style="background:${sw};display:none"></div>`
-      : `<div class="p-row-thumb-sw" style="background:${sw}"></div>`;
+    const thumb = p.image
+      ? `<img class="p-row-thumb" src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="p-row-sw"></div>`
+      : `<div class="p-row-sw"></div>`;
     return `
       <div class="p-row">
-        ${thumbHtml}
+        ${thumb}
         <div class="p-row-info">
           <div class="p-row-title">${p.title}</div>
           <div class="p-row-meta">${p.medium || '—'} · ${p.size || '—'}</div>
-          <div class="p-row-photos">${photos} photo${photos !== 1 ? 's' : ''}</div>
+          <div class="p-row-photos">${photos} photo${photos!==1?'s':''}</div>
         </div>
-        <span class="p-row-status ${p.available ? 's-avail' : 's-sold'}">${p.available ? 'Available' : 'Sold'}</span>
-        <div class="p-row-price">${p.price || '—'}</div>
-        <button class="row-btn" onclick="toggleStatus(${i})">${p.available ? 'Mark Sold' : 'Mark Available'}</button>
+        <span class="p-status-pill ${p.available?'pill-avail':'pill-sold'}">${p.available?'Available':'Sold'}</span>
+        <div class="p-row-price">${p.price}</div>
+        <button class="row-btn" onclick="toggleStatus(${i})">${p.available?'Mark Sold':'Mark Available'}</button>
+        <button class="row-btn danger" onclick="deletePainting(${i})">Remove</button>
       </div>`;
   }).join('');
 }
 
-function toggleStatus(i) {
-  paintings[i].available = !paintings[i].available;
-  renderStats();
-  renderList();
-  alert(`"${paintings[i].title}" marked as ${paintings[i].available ? 'Available' : 'Sold'}.\n\nTo make this permanent, update "available": ${paintings[i].available} in paintings.json on GitHub.`);
+async function toggleStatus(i) {
+  if (!confirm(`Mark "${allPaintings[i].title}" as ${allPaintings[i].available ? 'Sold' : 'Available'}?`)) return;
+  allPaintings[i].available = !allPaintings[i].available;
+  try {
+    const { sha } = await getPaintingsJson();
+    await savePaintingsJson(allPaintings, sha);
+    renderStats(); renderList();
+    showResult('ok', `✓ "${allPaintings[i].title}" updated — live on site within 2 minutes.`);
+  } catch(e) {
+    showResult('err', '✗ Could not save: ' + e.message);
+    allPaintings[i].available = !allPaintings[i].available; // revert
+  }
+}
+
+async function deletePainting(i) {
+  if (!confirm(`Remove "${allPaintings[i].title}" from your gallery? This cannot be undone.`)) return;
+  allPaintings.splice(i, 1);
+  try {
+    const { sha } = await getPaintingsJson();
+    await savePaintingsJson(allPaintings, sha);
+    renderStats(); renderList();
+    showResult('ok', '✓ Painting removed.');
+  } catch(e) {
+    showResult('err', '✗ Could not save: ' + e.message);
+    await loadPaintings(); // reload to get correct state
+  }
 }
 
 /* ── PHOTO UPLOAD ── */
-let uploadedPhotos = []; // { file, objectUrl, role }
+let photos = []; // { file, url, role }
 
-const zone = document.getElementById('uploadZone');
+const zone = document.getElementById('photoZone');
 zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
 zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-zone.addEventListener('drop', e => {
-  e.preventDefault(); zone.classList.remove('drag-over');
-  handlePhotos({ target: { files: e.dataTransfer.files } });
-});
+zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); handlePhotos({ target: { files: e.dataTransfer.files } }); });
 
 function handlePhotos(e) {
-  const files = Array.from(e.target.files).filter(f => f.type.startsWith('image/'));
-  if (!files.length) return;
-
-  files.forEach((file, idx) => {
-    const objectUrl = URL.createObjectURL(file);
-    const role = uploadedPhotos.length === 0 && idx === 0 ? 'main' : 'gallery';
-    uploadedPhotos.push({ file, objectUrl, role });
+  Array.from(e.target.files).filter(f => f.type.startsWith('image/')).forEach((file, idx) => {
+    photos.push({ file, url: URL.createObjectURL(file), role: photos.length === 0 && idx === 0 ? 'main' : 'gallery' });
   });
-
-  document.getElementById('uploadIcon').textContent = '✓';
+  document.getElementById('zoneIcon').textContent = '✓';
   zone.style.borderColor = 'var(--blush)';
   renderPhotoGrid();
+  document.getElementById('photoInput').value = '';
 }
 
 function renderPhotoGrid() {
-  const grid = document.getElementById('photoPreviewGrid');
-  if (!uploadedPhotos.length) { grid.innerHTML = ''; return; }
-  grid.innerHTML = uploadedPhotos.map((p, i) => `
-    <div class="photo-preview-card">
-      <img class="photo-preview-img" src="${p.objectUrl}" alt="${p.file.name}">
-      ${p.role === 'main' ? '<span class="photo-main-badge">Main</span>' : ''}
-      <button class="photo-remove" onclick="removePhoto(${i})">×</button>
-      <div class="photo-preview-info">
-        <div class="photo-preview-name">${p.file.name}</div>
-        <select class="photo-role-select" onchange="setRole(${i}, this.value)">
-          <option value="main" ${p.role==='main'?'selected':''}>Main photo</option>
-          <option value="wall" ${p.role==='wall'?'selected':''}>Wall mockup</option>
-          <option value="detail" ${p.role==='detail'?'selected':''}>Detail / texture</option>
-          <option value="studio" ${p.role==='studio'?'selected':''}>Studio shot</option>
-          <option value="gallery" ${p.role==='gallery'?'selected':''}>Other</option>
+  document.getElementById('photoGrid').innerHTML = photos.map((p, i) => `
+    <div class="photo-card">
+      <img src="${p.url}" alt="">
+      ${p.role === 'main' ? '<span class="main-badge">Main</span>' : ''}
+      <button class="photo-rm" onclick="removePhoto(${i})">×</button>
+      <div class="photo-card-info">
+        <div class="photo-card-name">${p.file.name}</div>
+        <select class="photo-role-sel" onchange="setRole(${i},this.value)">
+          <option value="main"   ${p.role==='main'   ?'selected':''}>Main photo</option>
+          <option value="wall"   ${p.role==='wall'   ?'selected':''}>Wall mockup</option>
+          <option value="detail" ${p.role==='detail' ?'selected':''}>Detail/texture</option>
+          <option value="studio" ${p.role==='studio' ?'selected':''}>Studio shot</option>
+          <option value="gallery"${p.role==='gallery'?'selected':''}>Other</option>
         </select>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function removePhoto(i) {
-  URL.revokeObjectURL(uploadedPhotos[i].objectUrl);
-  uploadedPhotos.splice(i, 1);
-  // Ensure at least one main
-  if (uploadedPhotos.length && !uploadedPhotos.find(p => p.role === 'main')) {
-    uploadedPhotos[0].role = 'main';
-  }
-  renderPhotoGrid();
-}
+function removePhoto(i) { URL.revokeObjectURL(photos[i].url); photos.splice(i,1); if(photos.length&&!photos.find(p=>p.role==='main'))photos[0].role='main'; renderPhotoGrid(); }
+function setRole(i, role) { if(role==='main')photos.forEach((p,j)=>{ if(j!==i&&p.role==='main')p.role='gallery'; }); photos[i].role=role; renderPhotoGrid(); }
 
-function setRole(i, role) {
-  // Only one main at a time
-  if (role === 'main') uploadedPhotos.forEach((p, idx) => { if (idx !== i) p.role = p.role === 'main' ? 'gallery' : p.role; });
-  uploadedPhotos[i].role = role;
-  renderPhotoGrid();
-}
+/* ── SAVE TO GITHUB ── */
+const STEPS = [
+  { key:'photos', label:'Uploading photos to GitHub images/ folder' },
+  { key:'json',   label:'Updating paintings.json' },
+  { key:'done',   label:'Done — live on site within 2 minutes' }
+];
 
-/* ── GENERATE JSON ── */
-function generateEntry() {
+function setStep(key, state) {
+  const el = document.getElementById('step-' + key);
+  if (!el) return;
+  el.querySelector('.step-icon').className = `step-icon step-${state}`;
+  el.querySelector('.step-icon').textContent = state==='done'?'✓':state==='error'?'✗':state==='active'?'…':'○';
+}
+function setProgress(pct) { document.getElementById('progressBar').style.width = pct + '%'; }
+
+async function savePainting() {
   const title = document.getElementById('fTitle').value.trim();
   const price = document.getElementById('fPrice').value.trim();
   if (!title) { alert('Please enter a painting title.'); return; }
   if (!price) { alert('Please enter a price.'); return; }
 
-  const cat      = document.getElementById('fCategory').value;
-  const available = document.getElementById('fStatus').value === 'true';
-  const size     = document.getElementById('fSize').value.trim();
-  const medium   = document.getElementById('fMedium').value.trim();
-  const desc     = document.getElementById('fDesc').value.trim();
+  const btn = document.getElementById('saveBtn');
+  const progressWrap = document.getElementById('progressWrap');
+  const result = document.getElementById('saveResult');
+  btn.disabled = true;
+  result.style.display = 'none';
 
-  // Build photo filenames
-  const mainPhoto = uploadedPhotos.find(p => p.role === 'main');
-  const imagePath = mainPhoto ? `images/${mainPhoto.file.name}` : '';
-  const allPhotos = uploadedPhotos.map(p => ({
-    file: `images/${p.file.name}`,
-    role: p.role
-  }));
+  // Show progress
+  progressWrap.style.display = 'block';
+  document.getElementById('progressSteps').innerHTML = STEPS.map(s =>
+    `<div class="progress-step" id="step-${s.key}"><div class="step-icon step-pending">○</div><span>${s.label}</span></div>`
+  ).join('');
+  setProgress(0);
 
-  const entry = {
-    title,
-    category: cat,
-    medium: medium || 'Heavy Body Acrylic + Gel Medium',
-    size: size || '',
-    price,
-    available,
-    image: imagePath,
-    photos: allPhotos.length > 0 ? allPhotos : undefined,
-    description: desc || ''
-  };
+  try {
+    // STEP 1 — upload images
+    setStep('photos', 'active');
+    const photoEntries = [];
+    const mainPhoto = photos.find(p => p.role === 'main') || photos[0];
 
-  // Remove undefined keys
-  Object.keys(entry).forEach(k => entry[k] === undefined && delete entry[k]);
+    for (let i = 0; i < photos.length; i++) {
+      const ph = photos[i];
+      // Sanitise filename
+      const safeName = ph.file.name.replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase();
+      const filename = `${Date.now()}-${safeName}`;
+      await uploadImageToGitHub(ph.file, filename);
+      photoEntries.push({ file: `images/${filename}`, role: ph.role });
+      setProgress(Math.round(((i + 1) / photos.length) * 40));
+    }
+    setStep('photos', 'done');
+    setProgress(50);
 
-  const json = JSON.stringify(entry, null, 2);
-  document.getElementById('jsonOutput').textContent = json;
-  document.getElementById('jsonOutput').style.display = 'block';
-  document.getElementById('outputSection').style.display = 'block';
-  document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+    // STEP 2 — update paintings.json
+    setStep('json', 'active');
+    const { paintings, sha } = await getPaintingsJson();
+
+    const mainEntry = photoEntries.find(p => p.role === 'main') || photoEntries[0];
+    const newPainting = {
+      title,
+      category:    document.getElementById('fCat').value,
+      medium:      document.getElementById('fMedium').value.trim() || 'Heavy Body Acrylic + Gel Medium',
+      size:        document.getElementById('fSize').value.trim(),
+      price,
+      available:   document.getElementById('fStatus').value === 'true',
+      image:       mainEntry ? mainEntry.file : '',
+      photos:      photoEntries.length > 0 ? photoEntries : undefined,
+      description: document.getElementById('fDesc').value.trim()
+    };
+    // Remove undefined
+    Object.keys(newPainting).forEach(k => newPainting[k] === undefined && delete newPainting[k]);
+
+    paintings.unshift(newPainting); // add to top
+    await savePaintingsJson(paintings, sha);
+    setStep('json', 'done');
+    setProgress(90);
+
+    // STEP 3 — done
+    setStep('done', 'done');
+    setProgress(100);
+
+    showResult('ok', `✓ "${title}" saved! It will appear on your site within 2 minutes.`);
+    await loadPaintings();
+    resetForm();
+
+  } catch(e) {
+    progressWrap.style.display = 'none';
+    showResult('err', '✗ Error: ' + e.message + '. Check your GitHub token has repo access.');
+  } finally {
+    btn.disabled = false;
+    setTimeout(() => { progressWrap.style.display = 'none'; }, 4000);
+  }
 }
 
-function copyJSON() {
-  const text = document.getElementById('jsonOutput').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.btn-copy');
-    btn.textContent = '✓ Copied!';
-    setTimeout(() => btn.textContent = 'Copy to Clipboard', 2000);
-  });
+function showResult(type, msg) {
+  const el = document.getElementById('saveResult');
+  el.className = 'save-result ' + type;
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function resetForm() {
-  document.getElementById('fTitle').value = '';
+  ['fTitle','fSize','fDesc'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('fPrice').value = '';
-  document.getElementById('fSize').value = '';
   document.getElementById('fMedium').value = 'Heavy Body Acrylic + Gel Medium';
-  document.getElementById('fDesc').value = '';
-  document.getElementById('fCategory').value = 'floral';
+  document.getElementById('fCat').value = 'floral';
   document.getElementById('fStatus').value = 'true';
-  uploadedPhotos.forEach(p => URL.revokeObjectURL(p.objectUrl));
-  uploadedPhotos = [];
-  document.getElementById('photoPreviewGrid').innerHTML = '';
-  document.getElementById('uploadIcon').textContent = '🖼';
-  document.getElementById('uploadZone').style.borderColor = '';
-  document.getElementById('outputSection').style.display = 'none';
-  document.getElementById('jsonOutput').style.display = 'none';
-  document.getElementById('photoInput').value = '';
+  photos.forEach(p => URL.revokeObjectURL(p.url));
+  photos = [];
+  document.getElementById('photoGrid').innerHTML = '';
+  document.getElementById('zoneIcon').textContent = '🖼';
+  zone.style.borderColor = '';
+  document.getElementById('progressWrap').style.display = 'none';
+  document.getElementById('saveResult').style.display = 'none';
 }
 
 /* ── CHANGE PASSWORD ── */
-function changePassword() {
-  const cur  = document.getElementById('pwCurrent').value;
-  const nw   = document.getElementById('pwNew').value;
-  const conf = document.getElementById('pwConfirm').value;
-  const msg  = document.getElementById('pwMsg');
-  msg.style.display = 'block';
-  if (cur !== CREDS.password) {
-    msg.className = 'pw-msg err'; msg.textContent = '✗ Current password is incorrect.'; return;
-  }
-  if (nw.length < 6) {
-    msg.className = 'pw-msg err'; msg.textContent = '✗ New password must be at least 6 characters.'; return;
-  }
-  if (nw !== conf) {
-    msg.className = 'pw-msg err'; msg.textContent = '✗ Passwords do not match.'; return;
-  }
-  CREDS.password = nw;
-  ['pwCurrent','pwNew','pwConfirm'].forEach(id => document.getElementById(id).value = '');
-  msg.className = 'pw-msg ok';
-  msg.textContent = '✓ Password updated for this session. To make it permanent, update the CREDS object in admin.html on GitHub.';
-  setTimeout(() => { msg.style.display = 'none'; }, 5000);
+function changePw() {
+  const cur=document.getElementById('pwCur').value, nw=document.getElementById('pwNew').value, conf=document.getElementById('pwConf').value;
+  const msg=document.getElementById('pwMsg'); msg.style.display='block';
+  if(cur!==CREDS.password){msg.className='pw-msg err';msg.textContent='✗ Current password incorrect.';return;}
+  if(nw.length<6){msg.className='pw-msg err';msg.textContent='✗ Minimum 6 characters.';return;}
+  if(nw!==conf){msg.className='pw-msg err';msg.textContent='✗ Passwords do not match.';return;}
+  CREDS.password=nw;
+  ['pwCur','pwNew','pwConf'].forEach(id=>document.getElementById(id).value='');
+  msg.className='pw-msg ok';
+  msg.textContent='✓ Password updated. To make permanent, update CREDS in admin.html on GitHub.';
+  setTimeout(()=>msg.style.display='none',5000);
 }
 </script>
 </body>
