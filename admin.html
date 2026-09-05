@@ -337,7 +337,7 @@ const ADMIN_EMAIL   = 'shridevi.amashi@gmail.com';
 
 /* ── CREDENTIALS ── */
 let CREDS = { username: 'artist', password: 'blooms2026' };
-let GH_TOKEN = '';
+let GH_TOKEN = localStorage.getItem('gh_token') || '';
 
 /* ── OTP STATE ── */
 let otpCode = '';
@@ -517,27 +517,28 @@ function showAdmin(user) {
   loadPaintings();
 }
 
-/* ── GITHUB TOKEN SETUP ── */
-function promptForToken() {
-  const t = prompt('Enter your GitHub Personal Access Token (ghp_...):\n\nGet one at: github.com/settings/tokens/new\n(Select repo scope, no expiry)');
-  if (t && t.startsWith('ghp_')) {
-    localStorage.setItem('gh_token', t);
-    GH_TOKEN = t;
-    return true;
-  }
-  return false;
-}
+
 
 window.addEventListener('load', () => {
-  // Auto-login if session still active
   const token = localStorage.getItem('gh_token');
-  if (sessionStorage.getItem('admin_auth') === 'true' && token) {
-    GH_TOKEN = token;
+  if (sessionStorage.getItem('admin_auth') === 'true') {
+    GH_TOKEN = token || '';
     showAdmin(sessionStorage.getItem('admin_user') || 'artist');
   }
 });
 
-/* ── GITHUB API ── */
+/* ── GITHUB TOKEN — stored in browser localStorage, entered once ── */
+function ensureToken() {
+  if (GH_TOKEN) return true;
+  const t = prompt('One-time setup — paste your GitHub Personal Access Token:\n\nGet one at: github.com/settings/tokens/new\n• Name: artbyshri-admin\n• Expiry: No expiration\n• Tick: repo (full access)\n\nThis is saved in your browser and never asked again.');
+  if (t && t.trim().startsWith('ghp_')) {
+    GH_TOKEN = t.trim();
+    localStorage.setItem('gh_token', GH_TOKEN);
+    return true;
+  }
+  alert('Invalid token — must start with ghp_. Please try again.');
+  return false;
+}
 const API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`;
 
 async function ghGet(path) {
@@ -589,11 +590,19 @@ async function uploadImageToGitHub(file, filename) {
 
 async function getPaintingsJson() {
   try {
+    // Get SHA via API (needed for writing) — requires token
     const data = await ghGet('/contents/paintings.json');
     const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
     return { paintings: content, sha: data.sha };
   } catch {
-    return { paintings: [], sha: null };
+    // Fallback — fetch directly without token (no SHA, for new file)
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/paintings.json?v=${Date.now()}`);
+      const content = await res.json();
+      return { paintings: content, sha: null };
+    } catch {
+      return { paintings: [], sha: null };
+    }
   }
 }
 
@@ -613,13 +622,15 @@ let allPaintings = [];
 
 async function loadPaintings() {
   try {
-    const { paintings } = await getPaintingsJson();
-    allPaintings = paintings;
+    // Read paintings.json directly — no token needed, it's a public file
+    const res = await fetch(`https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/paintings.json?v=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allPaintings = await res.json();
     renderStats();
     renderList();
   } catch (e) {
     document.getElementById('paintingsList').innerHTML =
-      `<div style="padding:2rem;text-align:center;color:var(--red);font-size:.82rem">Could not load paintings.json: ${e.message}</div>`;
+      `<div style="padding:2rem;text-align:center;color:var(--red);font-size:.82rem">Could not load paintings — ${e.message}</div>`;
   }
 }
 
@@ -662,6 +673,7 @@ function renderList() {
 }
 
 async function toggleStatus(i) {
+  if (!ensureToken()) return;
   if (!confirm(`Mark "${allPaintings[i].title}" as ${allPaintings[i].available ? 'Sold' : 'Available'}?`)) return;
   allPaintings[i].available = !allPaintings[i].available;
   try {
@@ -676,6 +688,7 @@ async function toggleStatus(i) {
 }
 
 async function deletePainting(i) {
+  if (!ensureToken()) return;
   if (!confirm(`Remove "${allPaintings[i].title}" from your gallery? This cannot be undone.`)) return;
   allPaintings.splice(i, 1);
   try {
@@ -749,14 +762,7 @@ async function savePainting() {
   const price = document.getElementById('fPrice').value.trim();
   if (!title) { alert('Please enter a painting title.'); return; }
   if (!price) { alert('Please enter a price.'); return; }
-
-  // Ensure GitHub token is available
-  if (!GH_TOKEN) {
-    GH_TOKEN = localStorage.getItem('gh_token') || '';
-    if (!GH_TOKEN) {
-      if (!promptForToken()) { alert('GitHub token needed to save. Please sign out and sign in again.'); return; }
-    }
-  }
+  if (!ensureToken()) return;
 
   const btn = document.getElementById('saveBtn');
   const progressWrap = document.getElementById('progressWrap');
