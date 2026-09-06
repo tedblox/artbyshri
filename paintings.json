@@ -1,5 +1,25 @@
 [
   {
+    "title": "Blue Meadow Sanctuary",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "120 × 90 × 3.8 cm",
+    "price": "250",
+    "available": true,
+    "image": "images/1788654967718-8d4fb3e8-31fe-480a-b6c7-2c676256a540.jpeg",
+    "photos": [
+      {
+        "file": "images/1788654967718-8d4fb3e8-31fe-480a-b6c7-2c676256a540.jpeg",
+        "role": "main"
+      },
+      {
+        "file": "images/1788654971217-e819c29d-4051-40b8-808f-0ac31c406be6.jpeg",
+        "role": "gallery"
+      }
+    ],
+    "description": "Blue Meadow Sanctuary"
+  },
+  {
     "title": "Sunlit Daisies",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
@@ -42,7 +62,7 @@
   {
     "title": "Midnight Garden",
     "medium": "Acrylic on Canvas",
-    "size": "18\" ÃÂ 24\"",
+    "size": "18\" ÃÂÃÂ 24\"",
     "price": "$320",
     "category": "floral",
     "description": "A vibrant bouquet bursts against a deep crimson-to-purple gradient background, with sunflowers, daisies and roses painted in bold impasto strokes full of joy and energy.",
@@ -52,17 +72,17 @@
   {
     "title": "Sacred Lotus",
     "medium": "Acrylic on Canvas",
-    "size": "12\" ÃÂ 24\"",
+    "size": "12\" ÃÂÃÂ 24\"",
     "price": "$380",
     "category": "floral",
-    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals Ã¢ÂÂ elegant and deeply spiritual.",
+    "description": "A stunning white lotus rises boldly against a dramatic crimson background, with gold leaf accents on the stem and thick textured petals ÃÂ¢ÃÂÃÂ elegant and deeply spiritual.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.16 PM (2).jpeg",
     "available": true
   },
   {
     "title": "Twilight Meadow",
     "medium": "Acrylic on Canvas",
-    "size": "18\" ÃÂ 24\"",
+    "size": "18\" ÃÂÃÂ 24\"",
     "price": "$350",
     "category": "landscape",
     "description": "Wildflowers dance under a sweeping pastel sky at dusk, with bees and butterflies caught mid-flight above a meadow of lupins, daisies and cosmos in soft dreamlike colours.",
@@ -72,30 +92,30 @@
   {
     "title": "Hummingbird Sunrise",
     "medium": "Acrylic on Canvas",
-    "size": "30\" ÃÂ 40\"",
+    "size": "30\" ÃÂÃÂ 40\"",
     "price": "$750",
     "category": "landscape",
-    "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet Ã¢ÂÂ pure joy on canvas.",
+    "description": "A breathtaking large-scale work featuring a jewel-toned hummingbird hovering over a wildflower meadow beneath an explosive sunrise sky of magenta, orange and violet ÃÂ¢ÃÂÃÂ pure joy on canvas.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (1).jpeg",
     "available": true
   },
   {
     "title": "Summer Serenade",
     "medium": "Acrylic on Canvas",
-    "size": "30\" ÃÂ 40\"",
+    "size": "30\" ÃÂÃÂ 40\"",
     "price": "$680",
     "category": "landscape",
-    "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers Ã¢ÂÂ fresh, light and full of summer calm.",
+    "description": "A colourful hummingbird glides through a soft blue sky above a sprawling meadow of white, yellow, pink and purple wildflowers ÃÂ¢ÃÂÃÂ fresh, light and full of summer calm.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM (2).jpeg",
     "available": true
   },
   {
     "title": "Daisies & Foxglove",
     "medium": "Acrylic on Canvas",
-    "size": "18\" ÃÂ 24\"",
+    "size": "18\" ÃÂÃÂ 24\"",
     "price": "$420",
     "category": "floral",
-    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky Ã¢ÂÂ a lush energetic celebration of the garden in full bloom.",
+    "description": "Bold white daisies with golden centres stand proudly against towering deep pink foxgloves and a vivid blue sky ÃÂ¢ÃÂÃÂ a lush energetic celebration of the garden in full bloom.",
     "image": "images/WhatsApp Image 2026-04-19 at 3.10.17 PM.jpeg",
     "available": true
   }
