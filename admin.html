@@ -310,7 +310,31 @@ input[type=file]{display:none}
       </div>
     </div>
 
-    <!-- CHANGE PASSWORD -->
+    <!-- GITHUB TOKEN SETTINGS -->
+    <div class="sec-card">
+      <div class="sec-card-head">
+        <span class="sec-card-title">GitHub Token</span>
+        <span style="font-size:.68rem;color:var(--muted)" id="tokenStatusLabel"></span>
+      </div>
+      <div class="sec-card-body">
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.7">
+          Your GitHub Personal Access Token is needed to save paintings, upload images, and update your gallery.
+          Get one at <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--blush)">github.com/settings/tokens/new</a>
+          — select <strong>repo</strong> scope and <strong>No expiration</strong>.
+        </p>
+        <div style="display:flex;gap:.75rem;align-items:flex-end;flex-wrap:wrap">
+          <div class="form-group" style="flex:1;min-width:240px">
+            <label class="form-label">Personal Access Token</label>
+            <input class="form-field" type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          </div>
+          <button class="btn-save" onclick="saveToken()" style="flex-shrink:0">Save Token</button>
+          <button class="btn-reset" onclick="clearToken()" style="flex-shrink:0">Reset</button>
+        </div>
+        <div id="tokenMsg" style="display:none;font-size:.82rem;margin-top:.75rem;padding:.6rem .85rem"></div>
+      </div>
+    </div>
+
+
     <div class="sec-card">
       <div class="sec-card-head"><span class="sec-card-title">Change Password</span></div>
       <div class="sec-card-body">
@@ -500,7 +524,54 @@ function showAdmin(user) {
   document.getElementById('admin-screen').style.display = 'block';
   document.getElementById('adminUserLabel').textContent = user;
   GH_TOKEN = localStorage.getItem('gh_token') || '';
+  updateTokenStatus();
   loadPaintings();
+}
+
+/* ── TOKEN SETTINGS ── */
+function updateTokenStatus() {
+  const label = document.getElementById('tokenStatusLabel');
+  const input = document.getElementById('tokenInput');
+  if (!label) return;
+  if (GH_TOKEN) {
+    label.textContent = '✓ Token saved';
+    label.style.color = 'var(--green)';
+    input.placeholder = '••••••••••••••••••••••• (saved)';
+  } else {
+    label.textContent = '⚠ No token — saving disabled';
+    label.style.color = 'var(--red)';
+    input.placeholder = 'ghp_xxxxxxxxxxxxxxxxxxxx';
+  }
+}
+
+function saveToken() {
+  const val = document.getElementById('tokenInput').value.trim();
+  const msg = document.getElementById('tokenMsg');
+  if (!val) { showTokenMsg('err', 'Please paste your token first.'); return; }
+  if (!val.startsWith('ghp_')) { showTokenMsg('err', 'Invalid token — must start with ghp_'); return; }
+  GH_TOKEN = val;
+  localStorage.setItem('gh_token', val);
+  document.getElementById('tokenInput').value = '';
+  updateTokenStatus();
+  showTokenMsg('ok', '✓ Token saved — you can now save paintings to GitHub.');
+}
+
+function clearToken() {
+  if (!confirm('Remove your saved GitHub token? You will need to enter it again to save paintings.')) return;
+  GH_TOKEN = '';
+  localStorage.removeItem('gh_token');
+  document.getElementById('tokenInput').value = '';
+  updateTokenStatus();
+  showTokenMsg('err', 'Token removed. Enter a new token above to re-enable saving.');
+}
+
+function showTokenMsg(type, text) {
+  const el = document.getElementById('tokenMsg');
+  el.style.display = 'block';
+  el.style.background = type === 'ok' ? 'var(--green-light)' : 'var(--red-light)';
+  el.style.color = type === 'ok' ? 'var(--green)' : 'var(--red)';
+  el.textContent = text;
+  setTimeout(() => el.style.display = 'none', 4000);
 }
 
 /* ── GITHUB TOKEN — stored in localStorage, asked once ── */
