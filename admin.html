@@ -140,7 +140,24 @@ input[type=file]{display:none}
 .row-btn:hover{border-color:var(--dark);color:var(--dark)}
 .row-btn.danger:hover{border-color:var(--red);color:var(--red)}
 
-/* CHANGE PASSWORD */
+/* EDIT PANEL */
+.edit-panel{display:none;padding:1.25rem 1.5rem;border-top:1px solid var(--border);background:var(--blush-pale)}
+.edit-panel.open{display:block}
+.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.75rem}
+.edit-group{display:flex;flex-direction:column;gap:.3rem}
+.edit-group.full{grid-column:span 2}
+.edit-label{font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:500}
+.edit-field{background:#fff;border:1px solid var(--border);color:var(--text);padding:.6rem .8rem;font-family:var(--font-sans);font-size:.83rem;outline:none;transition:border-color .2s;width:100%}
+.edit-field:focus{border-color:var(--blush)}
+textarea.edit-field{height:75px;resize:vertical}
+.edit-actions{display:flex;gap:.5rem;align-items:center}
+.btn-edit-save{background:var(--green);color:#fff;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.55rem 1.25rem;border:none;cursor:pointer;font-family:var(--font-sans);transition:background .2s}
+.btn-edit-save:hover{background:#3A6C4A}
+.btn-edit-cancel{background:transparent;color:var(--muted);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.55rem 1rem;border:1px solid var(--border);cursor:pointer;font-family:var(--font-sans);transition:all .2s}
+.btn-edit-cancel:hover{border-color:var(--dark);color:var(--dark)}
+.edit-result{font-size:.78rem;padding:.4rem .7rem;display:none}
+.edit-result.ok{background:var(--green-light);color:var(--green)}
+.edit-result.err{background:var(--red-light);color:var(--red)}
 .pw-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;align-items:end}
 .pw-msg{font-size:.8rem;padding:.6rem .85rem;display:none;margin-top:.75rem}
 .pw-msg.ok{background:var(--green-light);color:var(--green)}
@@ -711,21 +728,102 @@ function renderList() {
       ? `<img class="p-row-thumb" src="${p.image}" alt="${p.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="p-row-sw"></div>`
       : `<div class="p-row-sw"></div>`;
     return `
-      <div class="p-row">
-        ${thumb}
-        <div class="p-row-info">
-          <div class="p-row-title">${p.title}</div>
-          <div class="p-row-meta">${p.medium || '—'} · ${p.size || '—'}</div>
-          <div class="p-row-photos">${photos} photo${photos!==1?'s':''}</div>
+      <div class="p-row-wrap" id="wrap-${i}">
+        <div class="p-row">
+          ${thumb}
+          <div class="p-row-info">
+            <div class="p-row-title">${p.title}</div>
+            <div class="p-row-meta">${p.medium || '—'} · ${p.size || '—'}</div>
+            <div class="p-row-photos">${photos} photo${photos!==1?'s':''} · ${p.price}</div>
+          </div>
+          <span class="p-status-pill ${p.available?'pill-avail':'pill-sold'}">${p.available?'Available':'Sold'}</span>
+          <div class="p-row-actions">
+            <button class="row-btn" onclick="toggleEdit(${i})">✏ Edit</button>
+            <button class="row-btn" onclick="toggleStatus(${i})">${p.available?'Mark Sold':'Mark Available'}</button>
+            <button class="row-btn danger" onclick="deletePainting(${i})">Remove</button>
+          </div>
         </div>
-        <span class="p-status-pill ${p.available?'pill-avail':'pill-sold'}">${p.available?'Available':'Sold'}</span>
-        <div class="p-row-price">${p.price}</div>
-        <div class="p-row-actions">
-          <button class="row-btn" onclick="toggleStatus(${i})">${p.available?'Mark Sold':'Mark Available'}</button>
-          <button class="row-btn danger" onclick="deletePainting(${i})">Remove</button>
+        <!-- EDIT PANEL -->
+        <div class="edit-panel" id="edit-${i}">
+          <div class="edit-grid">
+            <div class="edit-group">
+              <label class="edit-label">Title</label>
+              <input class="edit-field" id="et-title-${i}" value="${(p.title||'').replace(/"/g,'&quot;')}">
+            </div>
+            <div class="edit-group">
+              <label class="edit-label">Price</label>
+              <input class="edit-field" id="et-price-${i}" value="${(p.price||'').replace(/"/g,'&quot;')}">
+            </div>
+            <div class="edit-group">
+              <label class="edit-label">Size</label>
+              <input class="edit-field" id="et-size-${i}" value="${(p.size||'').replace(/"/g,'&quot;')}">
+            </div>
+            <div class="edit-group">
+              <label class="edit-label">Medium</label>
+              <input class="edit-field" id="et-medium-${i}" value="${(p.medium||'').replace(/"/g,'&quot;')}">
+            </div>
+            <div class="edit-group">
+              <label class="edit-label">Category</label>
+              <select class="edit-field" id="et-cat-${i}">
+                ${['floral','landscape','abstract','portrait','other'].map(c=>`<option value="${c}" ${p.category===c?'selected':''}>${c.charAt(0).toUpperCase()+c.slice(1)}</option>`).join('')}
+              </select>
+            </div>
+            <div class="edit-group">
+              <label class="edit-label">Status</label>
+              <select class="edit-field" id="et-status-${i}">
+                <option value="true" ${p.available?'selected':''}>Available</option>
+                <option value="false" ${!p.available?'selected':''}>Sold</option>
+              </select>
+            </div>
+            <div class="edit-group full">
+              <label class="edit-label">Description</label>
+              <textarea class="edit-field" id="et-desc-${i}">${p.description||''}</textarea>
+            </div>
+          </div>
+          <div class="edit-actions">
+            <button class="btn-edit-save" onclick="saveEdit(${i})">Save Changes</button>
+            <button class="btn-edit-cancel" onclick="toggleEdit(${i})">Cancel</button>
+            <div class="edit-result" id="edit-result-${i}"></div>
+          </div>
         </div>
       </div>`;
   }).join('');
+}
+
+function toggleEdit(i) {
+  const panel = document.getElementById(`edit-${i}`);
+  const isOpen = panel.classList.contains('open');
+  // Close all panels first
+  document.querySelectorAll('.edit-panel.open').forEach(p => p.classList.remove('open'));
+  if (!isOpen) panel.classList.add('open');
+}
+
+async function saveEdit(i) {
+  if (!ensureToken()) return;
+  const title  = document.getElementById(`et-title-${i}`).value.trim();
+  const price  = document.getElementById(`et-price-${i}`).value.trim();
+  const size   = document.getElementById(`et-size-${i}`).value.trim();
+  const medium = document.getElementById(`et-medium-${i}`).value.trim();
+  const cat    = document.getElementById(`et-cat-${i}`).value;
+  const status = document.getElementById(`et-status-${i}`).value === 'true';
+  const desc   = document.getElementById(`et-desc-${i}`).value.trim();
+  const res    = document.getElementById(`edit-result-${i}`);
+
+  if (!title) { res.className='edit-result err'; res.style.display='block'; res.textContent='Title is required.'; return; }
+
+  allPaintings[i] = { ...allPaintings[i], title, price, size, medium, category:cat, available:status, description:desc };
+
+  res.className='edit-result ok'; res.style.display='block'; res.textContent='Saving…';
+
+  try {
+    const { sha } = await getPaintingsJson();
+    await savePaintingsJson(allPaintings, sha);
+    res.textContent = '✓ Saved — live on site within 2 minutes';
+    setTimeout(() => { toggleEdit(i); renderList(); renderStats(); }, 1500);
+  } catch(e) {
+    res.className='edit-result err'; res.textContent = '✗ ' + e.message;
+    await loadPaintings();
+  }
 }
 
 async function toggleStatus(i) {
