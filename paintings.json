@@ -1,5 +1,29 @@
 [
   {
+    "title": "Dancing in the Wild",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "16 x20 inches",
+    "price": "120",
+    "available": true,
+    "image": "images/1789529947373-20260913_085706.jpg",
+    "photos": [
+      {
+        "file": "images/1789529947373-20260913_085706.jpg",
+        "role": "main"
+      },
+      {
+        "file": "images/1789529951329-1789257406671.jpg",
+        "role": "gallery"
+      },
+      {
+        "file": "images/1789529954614-1789257456444.jpg",
+        "role": "gallery"
+      }
+    ],
+    "description": "Dancing in the Wild captures the carefree beauty of a wildflower meadow in full bloom. Delicate flowers sway gently across the field, celebrating the colours, movement and freedom found in nature. A joyful reminder to slow down, breathe, and simply enjoy the moment."
+  },
+  {
     "title": "Sunlit Daisies",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
