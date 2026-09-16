@@ -1,5 +1,33 @@
 [
   {
+    "title": "Whispers of Dusk",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "30 x 40 inches",
+    "price": "300",
+    "available": false,
+    "image": "images/1789531427474-67b8c1b0-38ba-11f1-b587-0fd1fb24f838.jpg",
+    "photos": [
+      {
+        "file": "images/1789531427474-67b8c1b0-38ba-11f1-b587-0fd1fb24f838.jpg",
+        "role": "main"
+      },
+      {
+        "file": "images/1789531429786-622f0ed0-38a0-11f1-b587-0fd1fb24f838.jpg",
+        "role": "wall"
+      },
+      {
+        "file": "images/1789531432914-20260415_175210.jpg",
+        "role": "studio"
+      },
+      {
+        "file": "images/1789531436333-20260415_175235.jpg",
+        "role": "detail"
+      }
+    ],
+    "description": "Wildflowers dance gently beneath a glowing evening sky as a tiny hummingbird finds its moment of stillness. A peaceful celebration of colour, light and the fleeting beauty of twilight."
+  },
+  {
     "title": "A Little Bit of Joy",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
@@ -69,7 +97,7 @@
         "role": "gallery"
       }
     ],
-    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃÂÃÂ¢ÃÂÃÂÃÂÃÂlike a collection of tiny sunny moments captured in bloom."
+    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂlike a collection of tiny sunny moments captured in bloom."
   },
   {
     "title": "Dancing in the Wild",
