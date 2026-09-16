@@ -1,5 +1,25 @@
 [
   {
+    "title": "Little Stories Series - Yellow Mini Sunflowers",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic",
+    "size": "8 inches round",
+    "price": "35",
+    "available": true,
+    "image": "images/1789530256124-1789211008772.jpg",
+    "photos": [
+      {
+        "file": "images/1789530256124-1789211008772.jpg",
+        "role": "main"
+      },
+      {
+        "file": "images/1789530258739-1787486727026.jpg",
+        "role": "gallery"
+      }
+    ],
+    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happiness—like a collection of tiny sunny moments captured in bloom."
+  },
+  {
     "title": "Dancing in the Wild",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
