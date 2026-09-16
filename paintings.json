@@ -1,5 +1,25 @@
 [
   {
+    "title": "A Little Bit of Joy",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "20 x 30 cms",
+    "price": "45",
+    "available": false,
+    "image": "images/1789531152191-182c07c0-38b9-11f1-b587-0fd1fb24f838.jpg",
+    "photos": [
+      {
+        "file": "images/1789531152191-182c07c0-38b9-11f1-b587-0fd1fb24f838.jpg",
+        "role": "main"
+      },
+      {
+        "file": "images/1789531155157-db955190-38b8-11f1-b587-0fd1fb24f838.jpg",
+        "role": "gallery"
+      }
+    ],
+    "description": "A little celebration of strength, beauty and new beginnings. These textured poppies burst into bloom with their vibrant petals, capturing the quiet joy of finding beauty in the smallest moments. A reminder that even the tiniest flowers can bring colour, hope and happiness into our lives."
+  },
+  {
     "title": "A Moment in the Wild",
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
@@ -65,7 +85,7 @@
         "role": "gallery"
       }
     ],
-    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃÂ¢ÃÂÃÂlike a collection of tiny sunny moments captured in bloom."
+    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃÂÃÂ¢ÃÂÃÂÃÂÃÂlike a collection of tiny sunny moments captured in bloom."
   },
   {
     "title": "Dancing in the Wild",
