@@ -1,5 +1,21 @@
 [
   {
+    "title": "Where Happiness Grows",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "60 x 40 inches",
+    "price": "1000",
+    "available": false,
+    "image": "images/1789530686185-1787454810138.jpg",
+    "photos": [
+      {
+        "file": "images/1789530686185-1787454810138.jpg",
+        "role": "main"
+      }
+    ],
+    "description": "Where Happiness Grows is a vibrant celebration of colour, nature and pure joy. Layers of richly textured flowers come alive beneath a bold and beautiful sky, creating a lively landscape filled with warmth and movement. Every bloom adds its own little burst of colour, capturing that feeling of happiness that grows when we pause and connect with the beauty around us."
+  },
+  {
     "title": "Little Stories Series - Yellow Mini Sunflowers",
     "category": "floral",
     "medium": "Heavy Body Acrylic",
@@ -17,7 +33,7 @@
         "role": "gallery"
       }
     ],
-    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happiness—like a collection of tiny sunny moments captured in bloom."
+    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessâlike a collection of tiny sunny moments captured in bloom."
   },
   {
     "title": "Dancing in the Wild",
