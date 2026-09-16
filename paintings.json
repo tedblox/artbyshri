@@ -4,6 +4,22 @@
     "category": "floral",
     "medium": "Heavy Body Acrylic + Gel Medium",
     "size": "30 x 40 inches",
+    "price": "440",
+    "available": false,
+    "image": "images/1789530900809-17cba2d0-38ba-11f1-b587-0fd1fb24f838.jpg",
+    "photos": [
+      {
+        "file": "images/1789530900809-17cba2d0-38ba-11f1-b587-0fd1fb24f838.jpg",
+        "role": "main"
+      }
+    ],
+    "description": "A graceful hummingbird pauses among colourful wildflowers beneath a breathtaking evening sky. The soft glow of dusk brings together the beauty, freedom and quiet magic of nature."
+  },
+  {
+    "title": "A Moment in the Wild",
+    "category": "floral",
+    "medium": "Heavy Body Acrylic + Gel Medium",
+    "size": "30 x 40 inches",
     "price": "250",
     "available": false,
     "image": "images/1789530817677-17cba2d0-38ba-11f1-b587-0fd1fb24f838.jpg",
@@ -49,7 +65,7 @@
         "role": "gallery"
       }
     ],
-    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃ¢ÂÂlike a collection of tiny sunny moments captured in bloom."
+    "description": "Yellow Mini Stories is a celebration of sunshine, joy and the simple beauty of nature. Golden sunflowers bloom against a rich blue and turquoise background, creating a bright contrast that feels both fresh and uplifting. Painted on a round canvas, this little piece brings a playful touch of warmth and happinessÃÂ¢ÃÂÃÂlike a collection of tiny sunny moments captured in bloom."
   },
   {
     "title": "Dancing in the Wild",
